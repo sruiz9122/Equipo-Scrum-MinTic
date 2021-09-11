@@ -4,3 +4,4 @@ Proyect MinTic - Season 3
 #Eliana Navarro Julio
 #Andrés Burbano
 #Andres F Molina
+# Sergio Ruiz
