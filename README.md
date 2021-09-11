@@ -6,4 +6,9 @@
 ### Andrés Burbano
 ### Andres F Molina
 ### Sergio Ruiz
+<<<<<<< HEAD
 Nueva modificación 
+Otra modificación :D
+=======
+Modificación desde Github (Remoto)
+>>>>>>> Main
