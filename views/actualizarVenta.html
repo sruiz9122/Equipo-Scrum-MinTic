@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourageousCode</title>
+    <!-- CSS Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" /> -->
+    <!-- Google Fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" /> -->
+    <!-- MDB -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+    <h1>Actualizar Venta</h1>
+    <div class="container">
+        <form class="row g-1">
+            <div class="col-md-3">
+                <label for="inputValorTotal" class="form-label">Valor Total</label>
+                <input type="number" class="form-control" min="0" id="inputValorTotal">
+            </div>
+            <div class="col-md-4">
+                <label for="inputIdProducto" class="form-label">ID Producto</label>
+                <input type="number" class="form-control" min="0" id="inputIdProducto">
+            </div>
+            <div class="col-md-4">
+                <label for="inputFechaVenta" class="form-label">Fecha Venta</label>
+                <input type="date" class="form-control" min="2000-01-02" id="inputFechaVenta">
+            </div>
+            <div class="col-md-2">
+                <label for="inputCantidad" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" min="0" id="inputCantidad">
+            </div>
+            <div class="col-md-4">
+                <label for="inputPrecioUnitario" class="form-label">Precio Unitario/Producto</label>
+                <input type="number" class="form-control" min="0" id="inputPrecioUnitario">
+            </div>
+            <div class="col-md-5">
+                <label for="inputEstadoVenta" class="form-label">Estado Venta</label>
+                <select id="inputEstadoVenta" class="form-select">
+                    <option selected>Elija un estado</option>
+                    <option>En progreso</option>
+                    <option>Cancelado</option>
+                    <option>Entregada</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="inputDocumentoIdentidadCliente" class="form-label">Documento Identidad Cliente</label>
+                <input type="number" class="form-control" min="0" id="inputDocumentoIdentidadCliente">
+            </div>
+            <div class="col-md-7">
+                <label for="inputNombreCliente" class="form-label">Nombre Cliente</label>
+                <input type="text" class="form-control" id="inputNombreCliente" placeholder="">
+            </div>
+            <div class="col-md-4">
+                <label for="inputNombreCliente" class="form-label">ID Vendedor Asignado</label>
+                <input type="number" class="form-control" min="0" id="inputNombreCliente" placeholder="">
+            </div>
+
+            <div class="col-12 mt-5 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Actualizar Venta</button>
+            </div>
+        </form>
+    </div>
+    <!-- JS de bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <!-- MDB -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script> -->
+    <script>
+        /* Setear Fecha Maxima el día de Hoy */
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("inputFechaVenta").setAttribute("max", today);
+    </script>
+</body>
+
+</html>
