@@ -1,146 +1,182 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Listar Usuarios</title>
     <!-- CSS Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body>
-
+  <body>
     <header>
-        <!-- Titulo -->
-        <h3>Actualizar (Rol/Estado) de usuario</h3>
-        <nav></nav>
+      <nav></nav>
     </header>
 
     <main>
-        <section>
-            <article>
-
-            </article>
-        </section>
-
+      <section>
+        <article></article>
+      </section>
     </main>
+<div class="container">
+
+    <div>
+      <!-- Titulo -->
+      <h3 class="h3" align="right">Actualizar (Rol/Estado) de usuario</h3>
+    </div>
 
     <!-- Opciones de Búsqueda -->
-    <div>
-        <label for="">Id: </label><input type="number" id="id">
-        <label for="">Nombre Usuario: </label><input type="text" id="nombre_usuario">
-        <label for="">Estado: </label>
-        <select name="estado" id="estado">
-            <optgroup>
-                <option value="seleccione">Pendiente</option>
-                <option value="autorizado">Autorizado</option>
-                <option value="no_autorizado">No Autorizado</option>
-            </optgroup>
-        </select>
-        <label for="">Correo: </label><input type="email" id="correo">
-        <label for="">Rol: </label>
-        <select name="rol" id="rol">
-            <optgroup>
-                <option value="administrator">Administrator</option>
-                <option value="seller">Seller</option>
-            </optgroup>
-        </select>
-        <input type="button" value="Buscar" id="buscar">
+    <div class="input-group mb-3">
+      <input
+        type="number"
+        id="id"
+        class="form-control"
+        placeholder="Id usuario"
+        aria-label="Id usuario"
+        aria-describedby="basic-addon2"
+      />
+      <input
+        type="text"
+        id="nombre_usuario"
+        class="form-control"
+        placeholder="Nombre de Usuario"
+        aria-label="Nombre de Usuario"
+        aria-describedby="basic-addon2"
+      />
+      <input
+        type="email"
+        id="correo"
+        class="form-control"
+        placeholder="Correo"
+        aria-label="Correo"
+        aria-describedby="basic-addon2"
+      />
+
+      <select
+        name="rol"
+        id="rol"
+        class="form-control"
+        placeholder="Estado"
+        aria-label="Estado"
+        aria-describedby="basic-addon2"
+      >
+        <optgroup>
+          <option value="">Seleccione Rol</option>
+          <option value="administrador">Administrador</option>
+          <option value="vendedor">Vendedor</option>
+        </optgroup>
+      </select>
+
+      <select
+        name="estado"
+        id="estado"
+        class="form-control"
+        placeholder="Estado"
+        aria-label="Estado"
+        aria-describedby="basic-addon2"
+      >
+        <optgroup>
+          <option value="">Seleccione Estado</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="autorizado">Autorizado</option>
+          <option value="noautorizado">No Autorizado</option>
+        </optgroup>
+      </select>
+      <!-- Botón -->
+      <input type="button" value="Buscar" id="buscar" class="btn btn-dark" />
+      <input type="button" value="Limpiar" id="limpiar" class="btn btn-dark" />
     </div>
 
     <!-- Tabla resultado busqueda -->
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre de Usuario</th>
-                <th>Correo</th>
-                <th>Rol</th>
-                <th>Editar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>1</th>
-                <th>Eliana Navarro</th>
-                <th>elianaj22@gmail.com</th>
-                <th>Adm</th>
-                <th><a href="#">Editar</a></th>
-            </tr>
-            <tr>
-                <th>2</th>
-                <th>Andres Molina</th>
-                <th>andresmolina1997@hotmail.com</th>
-                <th>Seller</th>
-                <th><a href="#">Editar</a></th>
-            </tr>
-            <tr>
-                <th>3</th>
-                <th>Andres Burbano</th>
-                <th>faburbano2@gmail.com</th>
-                <th>Seller</th>
-                <th><a href="#">Editar</a></th>
-            </tr>
-            <tr>
-                <th>4</th>
-                <th>Juan Urrego</th>
-                <th>j.a.u.m.0.6@gmail.com</th>
-                <th>Seller</th>
-                <th><a href="#">Editar</a></th>
-            </tr>
-            <tr>
-                <th>5</th>
-                <th>Sergio Ruiz</th>
-                <th>sruiz9122@gmail.com</th>
-                <th>Seller</th>
-                <th><a href="#">Editar</a></th>
-            </tr>
-
-        </tbody>
+    <table class="table">
+      <thead class="table table-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nombre de Usuario</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Rol</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Editar</th>
+        </tr>
+      </thead>
+      <tbody id="bodyTabla"></tbody>
     </table>
 
     <!-- Resultado de Edición -->
     <div>
-        <label for="">Usuario: Andres Molina</label>
-        <br>
-        <label for="">Rol: </label>
-        <select name="edicion_rol" id="edicion_rol">
-            <optgroup>
-                <option value="seleccione">Seleccione</option>
-                <option value="administrator">Administrator</option>
-                <option value="seller">Seller</option>
-            </optgroup>
-        </select>
-        <br>
-        <label for="">Estado: </label>
-        <select name="edicion_estado" id="edicion_estado">
-            <optgroup>
-                <option value="seleccione">Pendiente</option>
-                <option value="autorizado">Autorizado</option>
-                <option value="no_autorizado">No Autorizado</option>
-            </optgroup>
-        </select>
-        <br>
-        <input type="button" value="Confirmar">
+     
+      <div>
+        <h3 align="center">Usuario: Andres Molina</h3>
+      </div>
+        
+      
+      <br />
 
+      <div class="form-floating">
+        <select
+          class="form-select"
+          aria-label="Floating label select example"
+          name="edicion_rol"
+          id="edicionRol"
+        >
+          <optgroup>
+            <option value="">Seleccione</option>
+            <option value="administrador">Administrador</option>
+            <option value="vendedor">Vendedor</option>
+          </optgroup>
+        </select>
+        <label for="floatingSelect">Rol: </label>
+      </div>
+
+      <div class="form-floating">
+        <select
+          class="form-select"
+          aria-label="Floating label select example"
+          name="edicionEstado"
+          id="edicionEstado"
+        >
+          <optgroup>
+            <option value="">Seleccione</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="autorizado">Autorizado</option>
+            <option value="noautorizado">No Autorizado</option>
+          </optgroup>
+        </select>
+        <label for="floatingSelect">Estado: </label>
+      </div>
+
+      <br />
+      <p align="right">
+        <input
+          type="button"
+          value="Confirmar"
+          id="confirmar"
+          class="btn btn-dark"
+        />
+      </p>
     </div>
+    
+  
+</div>
 
     <footer>
-        <br>
-        <label for="">
-            <h5>Venta Gasolina</h5>
-        </label>
-        <br>
-        <label for="">© 2021 copyright: Corageous Code</label>
+      <br />
+      <center><h5>Venta Gasolina</h5></center>
+      <center><label for="">© 2021 copyright: Corageous Code</label></center>
     </footer>
     <!-- JS de bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
 
-</body>
-
+    <script src="/js/listar_usuarios.js"></script>
+  </body>
 </html>
