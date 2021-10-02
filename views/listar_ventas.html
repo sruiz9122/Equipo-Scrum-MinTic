@@ -69,7 +69,7 @@
 
     <div>
       <!-- Titulo -->
-      <h3 class="h3" align="right">Actualizar (Rol/Estado) de usuario</h3>
+      <h3 class="h3" align="right">Buscar / Listar venta</h3>
     </div>
 
     <!-- Opciones de Búsqueda -->
@@ -78,57 +78,27 @@
         type="number"
         id="id"
         class="form-control"
-        placeholder="Id usuario"
-        aria-label="Id usuario"
+        placeholder="Id venta"
+        aria-label="Id venta"
         aria-describedby="basic-addon2"
       />
       <input
-        type="text"
-        id="nombre_usuario"
+        type="number"
+        id="idcliente"
         class="form-control"
-        placeholder="Nombre de Usuario"
-        aria-label="Nombre de Usuario"
+        placeholder="Doc Identidad Cliente"
+        aria-label="Doc Identidad Cliente"
         aria-describedby="basic-addon2"
       />
       <input
-        type="email"
-        id="correo"
+        type="number"
+        id="idVendedor"
         class="form-control"
-        placeholder="Correo"
-        aria-label="Correo"
+        placeholder="Id Vendedor"
+        aria-label="Id Vendedor"
         aria-describedby="basic-addon2"
       />
 
-      <select
-        name="rol"
-        id="rol"
-        class="form-control"
-        placeholder="Estado"
-        aria-label="Estado"
-        aria-describedby="basic-addon2"
-      >
-        <optgroup>
-          <option value="">Seleccione Rol</option>
-          <option value="administrador">Administrador</option>
-          <option value="vendedor">Vendedor</option>
-        </optgroup>
-      </select>
-
-      <select
-        name="estado"
-        id="estado"
-        class="form-control"
-        placeholder="Estado"
-        aria-label="Estado"
-        aria-describedby="basic-addon2"
-      >
-        <optgroup>
-          <option value="">Seleccione Estado</option>
-          <option value="pendiente">Pendiente</option>
-          <option value="autorizado">Autorizado</option>
-          <option value="noautorizado">No Autorizado</option>
-        </optgroup>
-      </select>
       <!-- Botón -->
       <input type="button" value="Buscar" id="buscar" class="btn btn-dark" />
       <input type="button" value="Limpiar" id="limpiar" class="btn btn-dark" />
@@ -138,11 +108,15 @@
     <table class="table">
       <thead class="table table-dark">
         <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Nombre de Usuario</th>
-          <th scope="col">Correo</th>
-          <th scope="col">Rol</th>
+          <th scope="col">Id Venta</th>
           <th scope="col">Estado</th>
+          <th scope="col">Valor total venta</th>
+          <th scope="col">Id Prod</th>
+          <th scope="col">Cantidad Producto</th>
+          <th scope="col">Precio unitario</th>
+          <th scope="col">Fecha venta</th>
+          <th scope="col">Doc. Identidad cliente</th>
+          <th scope="col">Id Vendedor</th>
           <th scope="col">Editar</th>
         </tr>
       </thead>
@@ -154,58 +128,7 @@
     <!-- Resultado de Edición -->
     <div>
      
-      <div id="usuarioeditar">
-        
-      </div>
-        
-      
-      <br />
-
-      <div class="form-floating">
-        <select
-          class="form-select"
-          aria-label="Floating label select example"
-          name="edicion_rol"
-          id="edicionRol"
-        >
-          <optgroup>
-            <option value="">Seleccione</option>
-            <option value="administrador">Administrador</option>
-            <option value="vendedor">Vendedor</option>
-          </optgroup>
-        </select>
-        <label for="floatingSelect">Rol: </label>
-      </div>
-
-      <div class="form-floating">
-        <select
-          class="form-select"
-          aria-label="Floating label select example"
-          name="edicionEstado"
-          id="edicionEstado"
-        >
-          <optgroup>
-            <option value="">Seleccione</option>
-            <option value="pendiente">Pendiente</option>
-            <option value="autorizado">Autorizado</option>
-            <option value="noautorizado">No Autorizado</option>
-          </optgroup>
-        </select>
-        <label for="floatingSelect">Estado: </label>
-      </div>
-
-      <br />
-      <p align="right">
-        <input
-          type="button"
-          value="Confirmar"
-          id="confirmar"
-          class="btn btn-dark"
-        />
-      </p>
     </div>
-
-    
   
 </div>
 
@@ -227,6 +150,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="/js/listar_usuarios.js"></script>
+    <script src="/js/listar_ventas.js"></script>
   </body>
 </html>

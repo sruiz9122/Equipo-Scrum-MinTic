@@ -84,10 +84,11 @@ Funciones que pintan en pantalla
 function fmostrar() {
 
     let contenido = ``;
-
+    let a = 1
     usuarios.forEach(element => {
-        contenido += `<tr> <th scope="row">${element.id}</th> <th>${element.nombre}</th> <th>${element.correo}</th> <th>${element.rol}</th> <th>${element.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
+        contenido += `<tr> <th scope="row">${element.id}</th> <th>${element.nombre}</th> <th>${element.correo}</th> <th>${element.rol}</th> <th>${element.estado}</th> <th><input type="button" value="Editar" id="teditar${a}" class="btn btn-dark" /></th></tr>`
         $('#bodyTabla').html(contenido)
+        a += 1
     });
 
 }
@@ -202,6 +203,7 @@ function getSearch() {
 Función que permite limpiar la pantalla
 */
 function clearSearch() {
+    
     let usuarioFilter = document.getElementById("bodyTabla")
     let lblUsuariEdit = document.getElementById("usuarioeditar")
     let pintarLabel = `<h3 align="center"></h3>`
@@ -225,6 +227,7 @@ function clearSearch() {
 Función que permite Editar
 */
 function feditar(varEntrada) {
+    
     let lblUsuariEdit = document.getElementById("usuarioeditar")
     let ajustaArr = varEntrada - 1
     let usuarioEdit = usuarios[ajustaArr]
