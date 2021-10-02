@@ -19,7 +19,7 @@ let regVenta1 = {
     valorTo:`$180000`,
     idprod:5248,
     cantProd:10,
-    precioUni:1526,
+    precioUni:'$18000',
     fechaVenta:`02/10/2021`,
     docIdCliente: 10325612,
     idVendedor: 1346
@@ -31,7 +31,7 @@ let regVenta2 = {
     valorTo:`$80000`,
     idprod:5249,
     cantProd:10,
-    precioUni:1801,
+    precioUni:'$8000',
     fechaVenta:`03/10/2021`,
     docIdCliente: 10336612,
     idVendedor: 1346
@@ -43,7 +43,7 @@ let regVenta3 = {
     valorTo:`$181000`,
     idprod:5250,
     cantProd:10,
-    precioUni:1800,
+    precioUni:'$18100',
     fechaVenta:`04/10/2021`,
     docIdCliente: 10125612,
     idVendedor: 1346
@@ -55,7 +55,7 @@ let regVenta4 = {
     valorTo:`$180300`,
     idprod:5251,
     cantProd:10,
-    precioUni:1800,
+    precioUni:'$18030',
     fechaVenta:`05/10/2021`,
     docIdCliente: 3526816,
     idVendedor: 1346
