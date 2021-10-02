@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "bootstrap-icons": "^1.5.0",
+    "firebase": "^9.1.1"
+  },
+  "name": "equipo-scrum-mintic",
+  "description": "-------------------------------\r ### Juan Andrés Urrego Moreno\r ### Eliana Navarro Julio\r ### Andrés Burbano\r ### Andres F Molina\r ### Sergio Ruiz\r Nueva modificación \r Otra modificación :D",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  },
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sruiz9122/Equipo-Scrum-MinTic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sruiz9122/Equipo-Scrum-MinTic/issues"
+  },
+  "homepage": "https://github.com/sruiz9122/Equipo-Scrum-MinTic#readme"
+}
