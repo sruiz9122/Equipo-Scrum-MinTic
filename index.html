@@ -7,12 +7,113 @@
     <title>CourageousCode</title>
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  
+
 </head>
 <body>
     <h1>Courageous code</h1>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi eveniet officia iure ut temporibus nisi numquam voluptates debitis ipsum, odio aut iste explicabo placeat illum veritatis voluptatibus obcaecati blanditiis commodi!</p>
     <HR></HR>
+    <h2 >VAMOS A LA SESIÓN</h2>
+    <a href="/views/login.html">Inicio de sesión</a>
+    
     <!-- JS de bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-</body>
+
+
+
+    <main class="form-signin">
+
+        <img class="mb-4" src="images/favicon.png" id="user_image" alt="" width="100" height="100">
+        <h1 class="h3 mb-3 fw-normal" id="user_name">Acceso</h1>
+        <button onclick="loginWithGoogle()" class="w-100 btn btn-lg btn-primary" id="login_btn">454545454</button>
+       
+    
+        <button onclick="logout()" style="display: none;" class="w-100 btn btn-lg btn-danger" id="logout_btn">Salir</button>
+    </main>
+    
+      <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    
+      <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+      <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
+    
+      <!-- Add Firebase products that you want to use -->
+      <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    
+    
+      <script type="text/javascript">
+    
+        var firebaseConfig = {
+          apiKey: "APP_KEY",
+          authDomain: "APP_NAME.firebaseapp.com",
+          databaseURL: "https://APP_NAME.firebaseio.com",
+          projectId: "APP_NAME",
+          storageBucket: "APP_NAME.appspot.com",
+        };
+    
+        // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+    
+      </script>
+    
+      <script type="text/javascript">
+        //variables
+        var login_btn     = document.getElementById("login_btn"),
+          logout_btn      = document.getElementById("logout_btn"),
+          user_image      = document.getElementById("user_image"),
+          user_name_h1    = document.getElementById("user_name");
+    
+        //iniciar con Google
+        var loginWithGoogle = function(){
+    
+          var provider = new firebase.auth.GoogleAuthProvider();
+          firebase.auth().signInWithPopup(provider).then(function(result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          var user = result.user;
+    
+          console.log(user.displayName);
+          updateUser(user);
+          // ...
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+    
+          console.log(errorMessage);
+        });
+        }
+    
+        //agregar datos del usuario
+        var updateUser = function(user){
+          user_name_h1.innerHTML = "Hola, " + user.displayName;
+          user_image.src = user.photoURL;
+    
+          login_btn.style.display = "none";
+          logout_btn.style.display = "inline-block";
+        }
+    
+        var logout = function(){
+          firebase.auth().signOut().then(function() {
+            user_name_h1.innerHTML = "Acceso";
+            user_image.src = "assets/images/JimeCoding.jpg";
+            login_btn.style.display = "inline-block";
+            logout_btn.style.display = "none";
+    
+        }).catch(function(error) {
+          // An error happened.
+        });
+    
+        }
+    
+    
+      </script></body>
 </html>
