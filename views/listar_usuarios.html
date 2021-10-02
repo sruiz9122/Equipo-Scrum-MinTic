@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listar Usuarios</title>
+    <!-- CSS Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container">
+          <a class="navbar-brand" href="#"><img src="../img/LOGO_TRANS_2.svg" alt="LogoCourageous" height="25px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+                       
+            </ul>
+            <div class="navbar-nav nav-item container d-flex flex-wrap justify-content-end alert ">
+              <a href="#" class="d-block link-dark text-decoration-none " >
+                <img  src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle "  style="margin-right: 10px; ">
+              </a>
+              <div class="navbar-nav text-end">
+                <button type="button" class="btn btn-primary">Cerrar Sesión</button>
+              </div>
+            </div> 
+          </div>
+          
+        </div>
+      </nav>
+  
+    </header>
+
+    <main>
+      <section>
+        <article></article>
+      </section>
+    </main>
+<div class="container">
+
+    <div>
+      <!-- Titulo -->
+      <h3 class="h3" align="right">Actualizar (Rol/Estado) de usuario</h3>
+    </div>
+
+    <!-- Opciones de Búsqueda -->
+    <div class="input-group mb-3">
+      <input
+        type="number"
+        id="id"
+        class="form-control"
+        placeholder="Id usuario"
+        aria-label="Id usuario"
+        aria-describedby="basic-addon2"
+      />
+      <input
+        type="text"
+        id="nombre_usuario"
+        class="form-control"
+        placeholder="Nombre de Usuario"
+        aria-label="Nombre de Usuario"
+        aria-describedby="basic-addon2"
+      />
+      <input
+        type="email"
+        id="correo"
+        class="form-control"
+        placeholder="Correo"
+        aria-label="Correo"
+        aria-describedby="basic-addon2"
+      />
+
+      <select
+        name="rol"
+        id="rol"
+        class="form-control"
+        placeholder="Estado"
+        aria-label="Estado"
+        aria-describedby="basic-addon2"
+      >
+        <optgroup>
+          <option value="">Seleccione Rol</option>
+          <option value="administrador">Administrador</option>
+          <option value="vendedor">Vendedor</option>
+        </optgroup>
+      </select>
+
+      <select
+        name="estado"
+        id="estado"
+        class="form-control"
+        placeholder="Estado"
+        aria-label="Estado"
+        aria-describedby="basic-addon2"
+      >
+        <optgroup>
+          <option value="">Seleccione Estado</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="autorizado">Autorizado</option>
+          <option value="noautorizado">No Autorizado</option>
+        </optgroup>
+      </select>
+      <!-- Botón -->
+      <input type="button" value="Buscar" id="buscar" class="btn btn-dark" />
+      <input type="button" value="Limpiar" id="limpiar" class="btn btn-dark" />
+    </div>
+
+    <!-- Tabla resultado busqueda -->
+    <table class="table">
+      <thead class="table table-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nombre de Usuario</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Rol</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Editar</th>
+        </tr>
+      </thead>
+        
+      </div>
+      <tbody id="bodyTabla"></tbody>
+    </table>
+
+    <!-- Resultado de Edición -->
+    <div>
+     
+      <div id="usuarioeditar">
+        
+      </div>
+        
+      
+      <br />
+
+      <div class="form-floating">
+        <select
+          class="form-select"
+          aria-label="Floating label select example"
+          name="edicion_rol"
+          id="edicionRol"
+        >
+          <optgroup>
+            <option value="">Seleccione</option>
+            <option value="administrador">Administrador</option>
+            <option value="vendedor">Vendedor</option>
+          </optgroup>
+        </select>
+        <label for="floatingSelect">Rol: </label>
+      </div>
+
+      <div class="form-floating">
+        <select
+          class="form-select"
+          aria-label="Floating label select example"
+          name="edicionEstado"
+          id="edicionEstado"
+        >
+          <optgroup>
+            <option value="">Seleccione</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="autorizado">Autorizado</option>
+            <option value="noautorizado">No Autorizado</option>
+          </optgroup>
+        </select>
+        <label for="floatingSelect">Estado: </label>
+      </div>
+
+      <br />
+      <p align="right">
+        <input
+          type="button"
+          value="Confirmar"
+          id="confirmar"
+          class="btn btn-dark"
+        />
+      </p>
+    </div>
+
+    
+  
+</div>
+
+    <footer>
+      <br />
+      <center><h5>Venta Gasolina</h5></center>
+      <center><label for="">© 2021 Copyright: Corageous Code</label></center>
+    </footer>
+    <!-- JS de bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/js/listar_usuarios.js"></script>
+  </body>
+</html>
