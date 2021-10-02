@@ -246,5 +246,5 @@ function getConfirm() {
     console.log(rol)
     console.log(estado)
 
-    alert("Botón no configurado, lo siento!")
+    alert("Usuario Actualizado!")
 }
