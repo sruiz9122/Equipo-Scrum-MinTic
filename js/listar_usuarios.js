@@ -1,17 +1,19 @@
-var numId = document.getElementById("id")
-var strNombreUsuario = document.getElementById("nombre_usuario")
-var strEstado = document.getElementById("estado")
-var strCorreo = document.getElementById("correo")
-var strRol = document.getElementById("rol")
-var btnbuscar = document.getElementById("buscar")
-var btnlimpiar = document.getElementById("limpiar")
+let numId = document.getElementById("id")
+let strNombreUsuario = document.getElementById("nombre_usuario")
+let strEstado = document.getElementById("estado")
+let strCorreo = document.getElementById("correo")
+let strRol = document.getElementById("rol")
+let btnbuscar = document.getElementById("buscar")
+let btnlimpiar = document.getElementById("limpiar")
+let strEstadoConfirm = document.getElementById("edicionEstado")
+let strRolConfirm = document.getElementById("edicionRol")
+let btnConfirmar = document.getElementById("confirmar")
+const NODATA = "No se encuentran datos"
 
-var strEstadoConfirm = document.getElementById("edicionEstado")
-var strRolConfirm = document.getElementById("edicionRol")
-var btnConfirmar = document.getElementById("confirmar")
-var noData = "No se encuentran datos"
-
-var eliana = {
+/*
+Usuarios
+*/
+let eliana = {
     id: 1,
     nombre: `Eliana Navarro`,
     correo: `elianaj22@gmail.com`,
@@ -19,7 +21,7 @@ var eliana = {
     estado: `Autorizado`
 }
 
-var andresm = {
+let andresm = {
     id: 2,
     nombre: `Andres Molina`,
     correo: `andresmolina1997@hotmail.com`,
@@ -27,7 +29,7 @@ var andresm = {
     estado: `Pendiente`
 }
 
-var andresb = {
+let andresb = {
     id: 3,
     nombre: `Andres Burbano`,
     correo: `faburbano2@gmail.com`,
@@ -35,7 +37,7 @@ var andresb = {
     estado: `Autorizado`
 }
 
-var juan = {
+let juan = {
     id: 4,
     nombre: `Juan Urrego`,
     correo: `j.a.u.m.0.6@gmail.com`,
@@ -43,7 +45,7 @@ var juan = {
     estado: `Autorizado`
 }
 
-var sergio = {
+let sergio = {
     id: 5,
     nombre: `Sergio Ruiz`,
     correo: `sruiz9122@gmail.com`,
@@ -51,7 +53,7 @@ var sergio = {
     estado: `No Autorizado`
 }
 
-var fredy = {
+let fredy = {
     id: 6,
     nombre: `Fredy Mendoza`,
     correo: `fmendoza@gmail.com`,
@@ -59,56 +61,86 @@ var fredy = {
     estado: `No Autorizado`
 }
 
-var usuarios = [eliana, andresm, andresb, juan, sergio, fredy]
+let paola = {
+    id: 7,
+    nombre: `Paola Chia`,
+    correo: `pchia@realm.com`,
+    rol: `Administradora`,
+    estado: `Autorizado`
+}
 
+let usuarios = [eliana, andresm, andresb, juan, sergio, fredy, paola]
+
+/*
+Botones
+*/
 btnbuscar.addEventListener("click", getSearch)
 btnlimpiar.addEventListener("click", clearSearch)
 btnConfirmar.addEventListener("click", getConfirm)
 
-var etiqueta = [usuarios.length] 
+/*
+Funciones que pintan en pantalla
+*/ 
+function fmostrar() {
 
+    let contenido = ``;
+
+    usuarios.forEach(element => {
+        contenido += `<tr> <th scope="row">${element.id}</th> <th>${element.nombre}</th> <th>${element.correo}</th> <th>${element.rol}</th> <th>${element.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
+        $('#bodyTabla').html(contenido)
+    });
+
+}
+
+function fmostrarFiltradoid(filtered) {
+
+    let pintarTabla = ``;
+
+    filtered.forEach(usuario => {
+        pintarTabla += `<tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
+        feditar(usuario.id)
+        $('#bodyTabla').html(pintarTabla)
+    });
+
+}
+
+function fmostrarFiltrado(filtered) {
+
+    let pintarTabla = ``;
+
+    filtered.forEach(usuario => {
+        pintarTabla += `<tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
+        $('#bodyTabla').html(pintarTabla)
+    });
+
+}
+
+/*
+Funcion de búsqueda
+*/
 function getSearch() {
 
     console.clear()
-    var usuarioFilter = document.getElementById("bodyTabla")
 
-    var id = numId.value
-    var nombreUsuario = strNombreUsuario.value
-    var correo = strCorreo.value
-    var rol = strRol.value
-    var estado = strEstado.value
-    var pintarTabla = ``
-    var idEtiquetaEd = ``
-   
+    let usuarioFilter = document.getElementById("bodyTabla")
 
+    let id = numId.value
+    let nombreUsuario = strNombreUsuario.value
+    let correo = strCorreo.value
+    let rol = strRol.value
+    let estado = strEstado.value
+    let pintarTabla = ``
 
 
     if (id == '' && nombreUsuario == '' && estado == '' && correo == '' && rol == '') {
-        
-        var a = 0
-        usuarios.forEach(usuario => {
-            
-            a += 1
-            idEtiquetaEd = `teditar${a}`
-            pintarTabla = `${pintarTabla} <tr id="leditar"> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="${idEtiquetaEd}" class="btn btn-dark" /></th></tr>`
-            usuarioFilter.innerHTML = pintarTabla
-            etiqueta.push(idEtiquetaEd)
-            console.log(etiqueta[a])
-   
-        });
-
-
+        fmostrar()
     } else if (id > 0 && id <= usuarios.length) {
-        // Filtrar por id
 
         const filtered = usuarios.filter(function (element) {
             return element.id == id;
         });
 
-        filtered.forEach(usuario => {
-            pintarTabla = `${pintarTabla} <tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
-            usuarioFilter.innerHTML = pintarTabla
-        });
+        fmostrarFiltradoid(filtered)
 
     } else if (nombreUsuario != '') {
 
@@ -117,14 +149,9 @@ function getSearch() {
         });
 
         if (filtered == '') {
-            alert(noData)
+            alert(NODATA)
         } else {
-
-            filtered.forEach(usuario => {
-                pintarTabla = `${pintarTabla} <tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
-                usuarioFilter.innerHTML = pintarTabla
-            });
-
+            fmostrarFiltradoid(filtered)
         }
 
     } else if (correo != '') {
@@ -134,13 +161,9 @@ function getSearch() {
         });
 
         if (filtered == '') {
-            alert(noData)
+            alert(NODATA)
         } else {
-
-            filtered.forEach(usuario => {
-                pintarTabla = `${pintarTabla} <tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
-                usuarioFilter.innerHTML = pintarTabla
-            });
+            fmostrarFiltradoid(filtered)
         }
 
     } else if (rol != '') {
@@ -150,13 +173,9 @@ function getSearch() {
         });
 
         if (filtered == '') {
-            alert(noData)
+            alert(NODATA)
         } else {
-
-            filtered.forEach(usuario => {
-                pintarTabla = `${pintarTabla} <tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
-                usuarioFilter.innerHTML = pintarTabla
-            });
+            fmostrarFiltrado(filtered)
         }
 
     } else if (estado != '') {
@@ -170,41 +189,61 @@ function getSearch() {
         });
 
         if (filtered == '') {
-            alert(noData)
+            alert(NODATA)
         } else {
-
-            filtered.forEach(usuario => {
-                pintarTabla = `${pintarTabla} <tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
-                usuarioFilter.innerHTML = pintarTabla
-            });
+            fmostrarFiltrado(filtered)
         }
 
     } else {
-        alert(noData)
+        alert(NODATA)
     }
 
 }
 
+/*
+Función que permite limpiar la pantalla
+*/
 function clearSearch() {
+    let usuarioFilter = document.getElementById("bodyTabla")
+    let lblUsuariEdit = document.getElementById("usuarioeditar")
+    let pintarLabel = `<h3 align="center"></h3>`
+
+    //Limpia filtros de consulta
     numId.value = ''
     strNombreUsuario.value = ''
     strEstado.value = ''
     strCorreo.value = ''
     strRol.value = ''
+
+    //Limpia la tabla
+    usuarioFilter.innerHTML = ''
+
+    //Limpiar campos de edición
+    lblUsuariEdit.innerHTML = pintarLabel
+
 }
 
-function feditar(){   
-
+/*
+Función que permite limpiar pantalla
+*/
+function feditar(varEntrada) {
+    let lblUsuariEdit = document.getElementById("usuarioeditar")
+    let ajustaArr = varEntrada - 1
+    let usuarioEdit = usuarios[ajustaArr]
+    let pintarLabel = `<h3 align="center">Usuario: ${usuarioEdit.nombre}</h3>`
+    lblUsuariEdit.innerHTML = pintarLabel
 }
 
+/*
+ Función que permite confirmar cambios
+ */
 function getConfirm() {
     console.clear()
-    var estado = strEstadoConfirm.value
-    var rol = strRolConfirm.value
+    let estado = strEstadoConfirm.value
+    let rol = strRolConfirm.value
 
     console.log(rol)
     console.log(estado)
 
-    alert("Se actualiza usuario")
+    alert("Botón no configurado, lo siento!")
 }
-
