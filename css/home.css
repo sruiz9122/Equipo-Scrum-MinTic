@@ -1,4 +1,14 @@
 /* modificacion tamaño boton */
-.btn{
-    padding: 110px 32px; 
+.btn-stage{
+    height: 500px;
+    padding: 0px 32px; 
+}
+
+.contenedor-botones{
+    width: 70%;
+    /* border: 1px solid red; */
+}
+
+.wrapper-botones{
+    height: 70vh;
 }
