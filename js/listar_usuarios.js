@@ -122,14 +122,12 @@ function getSearch() {
 
     console.clear()
 
-    let usuarioFilter = document.getElementById("bodyTabla")
-
     let id = numId.value
     let nombreUsuario = strNombreUsuario.value
     let correo = strCorreo.value
     let rol = strRol.value
     let estado = strEstado.value
-    let pintarTabla = ``
+
 
 
     if (id == '' && nombreUsuario == '' && estado == '' && correo == '' && rol == '') {
