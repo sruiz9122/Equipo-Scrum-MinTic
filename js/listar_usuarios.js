@@ -222,7 +222,7 @@ function clearSearch() {
 }
 
 /*
-Función que permite limpiar pantalla
+Función que permite Editar
 */
 function feditar(varEntrada) {
     let lblUsuariEdit = document.getElementById("usuarioeditar")
