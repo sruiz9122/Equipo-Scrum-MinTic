@@ -84,10 +84,10 @@
 
             <!-- Button trigger modal -->
             <div class="col-12 mt-5 d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#modalConfirmacionRegistro">
-                    Registrar Producto
-                </button>
+                <input type="button" value="Registrar Producto" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalConfirmacionRegistro" id="botonRegistrarProducto">
+                    
+                </input>
             </div>
            <!--  <div class="col-12 mt-5 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary" data-bs-toggle="modal" id="botonRegistrarProducto">
@@ -130,7 +130,8 @@
     <!-- MDB -->
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script> -->
     <!-- Await + Modal + Efecto Spinner  -->
-    <script src="/js/registroProducto.js"></script>
+    <script type="module" src="/js/configDB.js"></script>
+    <script type="module" src="/js/registroProducto.js"></script>
 </body>
 
 </html>
