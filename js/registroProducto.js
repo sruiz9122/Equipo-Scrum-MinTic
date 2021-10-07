@@ -1,33 +1,23 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyDU18oKq0-KUp5Bj2aJtUzGkwTwGJQ4jt0",
-    authDomain: "ventagasolinamstic.firebaseapp.com",
-    projectId: "ventagasolinamstic",
-    storageBucket: "ventagasolinamstic.appspot.com",
-    messagingSenderId: "606293734557",
-    appId: "1:606293734557:web:ee303187d7fa1d4ccb5074",
-    measurementId: "G-HNKHCZ4N9Y"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
+import { getUUID } from './utils.js'
 
 let strDescPrd = document.getElementById("inputDescripcionProducto")
 let numValor = document.getElementById("inputValorUnitarioProducto")
 let strEstado = document.getElementById("inputEstadoProducto")
+let boton = document.getElementById('botonRegistrarProducto')
+const db = firebase.firestore();
 
-let boton = document.getElementById('botonRegistrarProducto');
+export async function insert(item) {
+    try {
+        const response = await db.collection("productos").add(item)
+        return response
+    } catch (error) {
+        throw new Error(error)
+    }
+}
 
-boton.addEventListener("click", datosEntrada)
+boton.addEventListener('click', datosEntrada)
 
-function datosEntrada() {
+async function datosEntrada() {
     console.clear()
 
     let descProd = strDescPrd.value
@@ -41,20 +31,27 @@ function datosEntrada() {
     }
 
 
-    console.log(descProd, `$ ${valorUni}`, estado)
+    console.log(descProd, valorUni, estado)
 
+    if(descProd != '' && valorUni != '' && estado != '') {
+       
+        try {
+            const prod = {
+                id: getUUID(),
+                descripcion: descProd,
+                estado: estado,
+                valor: valorUni
+            }
+            const response = await insert(prod)
+            console.log(response)//Respuesta de la DB
+        } catch (error) {
+    
+        } 
 
-    app.collection("productos").add({
-        descripcion: descProd,
-        valor: valorUni,
-        estado: estado
-    })
-        .then(function (docRef) {
-            console.log(`Producto registrado: ${docRef.id}`);
-        })
-        .catch(function (error) {
-            console.error(`Error: ${error}`)
-        })
+    } else {
+          alert(`Ninguno de los campos puede estar vacío`)  
+    }
+   
 
 }
 
