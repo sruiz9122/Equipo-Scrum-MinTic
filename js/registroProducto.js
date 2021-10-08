@@ -4,6 +4,7 @@ let strDescPrd = document.getElementById("inputDescripcionProducto")
 let numValor = document.getElementById("inputValorUnitarioProducto")
 let strEstado = document.getElementById("inputEstadoProducto")
 let boton = document.getElementById('botonRegistrarProducto')
+let divModal = document.getElementById('modaljs')
 const db = firebase.firestore();
 
 export async function insert(item) {
@@ -33,8 +34,8 @@ async function datosEntrada() {
 
     console.log(descProd, valorUni, estado)
 
-    if(descProd != '' && valorUni != '' && estado != '') {
-       
+    if (descProd != '' && valorUni != '' && estado != '') {
+
         try {
             const prod = {
                 id: getUUID(),
@@ -44,14 +45,15 @@ async function datosEntrada() {
             }
             const response = await insert(prod)
             console.log(response)//Respuesta de la DB
+
         } catch (error) {
-    
-        } 
+            console.error(error)
+        }
 
     } else {
-          alert(`Ninguno de los campos puede estar vacío`)  
+        alert(`Ninguno de los campos puede estar vacío`)
     }
-   
+
 
 }
 
