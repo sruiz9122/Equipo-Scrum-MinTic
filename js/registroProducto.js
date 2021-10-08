@@ -4,7 +4,6 @@ let strDescPrd = document.getElementById("inputDescripcionProducto")
 let numValor = document.getElementById("inputValorUnitarioProducto")
 let strEstado = document.getElementById("inputEstadoProducto")
 let boton = document.getElementById('botonRegistrarProducto')
-let divModal = document.getElementById('modaljs')
 const db = firebase.firestore();
 
 export async function insert(item) {
