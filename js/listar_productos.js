@@ -181,6 +181,7 @@ function getSearch() {
         fmostrarFiltrado(descripcion)
     }
     else if(id != '' && descripcion != ''){
+        console.clear();
         fmostrarFiltradoid(id)
     }
     // HU_015 - FIN Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción)
