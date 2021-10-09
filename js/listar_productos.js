@@ -8,38 +8,62 @@ let strEstadoConfirm = document.getElementById("edicionEstado")
 let btnConfirmar = document.getElementById("confirmar")
 const NODATA = "No se encuentran datos"
 
+/* HU_014 - Integración Backend Productos - Consulta Productos  */
+
 /*
 Usuarios
 */
-let gasolina = {
-    id: 1,
-    descripcion: `Gasolina Corriente`,
-    valorunit: 9000,
-    estado: `Disponible`
+// let gasolina = {
+//     id: 1,
+//     descripcion: `Gasolina Corriente`,
+//     valorunit: 9000,
+//     estado: `Disponible`
+// }
+
+// let gasolina_extra = {
+//     id: 2,
+//     descripcion: `Gasolina extra`,
+//     valorunit: 10000,
+//     estado: `No Disponible`
+// }
+
+// let gas_natural_vehicular = {
+//     id: 3,
+//     descripcion: `Gas natural vehicular`,
+//     valorunit: 1500,
+//     estado: `Disponible`
+// }
+
+// let Aditivo_gasolina = {
+//     id: 4,
+//     descripcion: `Aditivo Gasolina`,
+//     valorunit: 15000,
+//     estado: `Disponible`
+// }
+
+// let usuarios = [gasolina, gasolina_extra, gas_natural_vehicular, Aditivo_gasolina]
+
+
+const db = firebase.firestore();
+let productos = [];
+
+// Carga los datos de Firestore
+async function loadItems() {
+    productos = [];
+    try {
+
+        const response = await db.collection('productos').get()
+
+        response.forEach(function (item) {
+            console.log(item.data());
+            productos.push(item.data())
+        })
+        return productos
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-let gasolina_extra = {
-    id: 2,
-    descripcion: `Gasolina extra`,
-    valorunit: 10000,
-    estado: `No Disponible`
-}
-
-let gas_natural_vehicular = {
-    id: 3,
-    descripcion: `Gas natural vehicular`,
-    valorunit: 1500,
-    estado: `Disponible`
-}
-
-let Aditivo_gasolina = {
-    id: 4,
-    descripcion: `Aditivo Gasolina`,
-    valorunit: 15000,
-    estado: `Disponible`
-}
-
-let usuarios = [gasolina,gasolina_extra, gas_natural_vehicular, Aditivo_gasolina]
 
 /*
 Botones
@@ -50,15 +74,24 @@ btnConfirmar.addEventListener("click", getConfirm)
 
 /*
 Funciones que pintan en pantalla
-*/ 
-function fmostrar() {
+*/
+//  function fmostrar() { //HU_014 - Integración Backend Productos - Consulta Productos
+async function fmostrar() { //HU_014 - Integración Backend Productos - Consulta Productos
 
     let contenido = ``;
 
-    usuarios.forEach(element => {
-        contenido += `<tr><th scope="row">${element.id}</th><th>${element.descripcion}</th><th>${element.valorunit}</th><th>${element.estado}</th><th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
+    //HU_014 - Integración Backend Productos - Consulta Productos 
+    // usuarios.forEach(element => {
+    //     contenido += `<tr><th scope="row">${element.id}</th><th>${element.descripcion}</th><th>${element.valorunit}</th><th>${element.estado}</th><th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
+    //     $('#bodyTabla').html(contenido)
+    // });
+
+    productos = await loadItems()
+    productos.forEach(element => {
+        contenido += `<tr><th scope="row">${element.id}</th><th>${element.descripcion}</th><th>${element.valor}</th><th>${element.estado}</th></tr>`
         $('#bodyTabla').html(contenido)
     });
+    //HU_014 - Integración Backend Productos - Consulta Productos 
 
 }
 
@@ -99,7 +132,7 @@ function getSearch() {
 
 
 
-    if (id == '' && descripcion == '' && valor == '' && estado == '' ) {
+    if (id == '' && descripcion == '' && valor == '' && estado == '') {
         fmostrar()
     } /* else if (id > 0 && id <= usuarios.length) {
 
@@ -151,7 +184,7 @@ function getSearch() {
 
     } */else {
         alert(NODATA)
-    } 
+    }
 
 }
 
@@ -168,7 +201,7 @@ function clearSearch() {
     strDescripcionProducto.value = ''
     numVal.value = ''
     strEstado.value = ''
-    
+
 
     //Limpia la tabla
     usuarioFilter.innerHTML = ''
