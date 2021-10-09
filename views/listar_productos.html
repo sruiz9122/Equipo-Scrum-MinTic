@@ -78,6 +78,49 @@
       <input type="button" value="Limpiar" id="botonLimpiarBusqueda" class="btn btn-dark" />
     </div>
 
+<!-- Resultado de Edición -->
+<form action="">
+  <div class="formEdicionProductos">
+    <div id="usuarioeditar">
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <input type="text" id="descripcion_producto" class="form-control" placeholder="Descripci&oacute;n producto"
+        aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" required />
+    </div>
+    <div class="input-group mb-3">
+      <input type="number" id="valor_unitario" class="form-control" placeholder="Valor unitario"
+        aria-label="Valor unitario" aria-describedby="basic-addon2" required />
+    </div>
+    <label for="floatingSelect">Estado: </label>
+<!--     <div class="form-floating">
+      <select class="form-select" aria-label="Floating label select example" name="edicionEstado" id="estadoproducto" required="required">
+        <optgroup>
+          <option value="">Seleccione</option>
+          <option value="Disponible">Disponible</option>
+          <option value="No Disponible">No Disponible</option>
+        </optgroup>
+      </select> -->
+      <label for="inputEstadoProducto" class="form-label">Estado</label>
+      <select id="inputEstadoProducto" class="form-select" required="required">
+        <option value="" class="text-muted">Elija un estado</option>
+        <option value="1">Disponible</option>
+        <option value="2">No disponible</option>
+      </select>
+  
+    </div>
+    <button type="submit"  id="botonConfirmar" class="btn btn-dark">
+      Confirmar Edición
+  </button>
+  <br />
+    <!-- <br />
+    <p align="right">
+      <input type="button" value="Confirmar" id="botonConfirmar" class="btn btn-dark" />
+    </p> -->
+  </div>
+</form>
+
+
     <!-- Tabla resultado busqueda -->
     <table class="table">
       <thead class="table table-dark">
@@ -94,42 +137,7 @@
   <tbody id="bodyTabla"></tbody>
   </table>
 
-  <!-- Resultado de Edición -->
-  <div>
-
-    <div id="usuarioeditar">
-
-    </div>
-
-
-    <br />
-
-    <div class="input-group mb-3">
-      <input type="text" id="descripcion_producto" class="form-control" placeholder="Descripci&oacute;n producto"
-        aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" />
-    </div>
-
-    <div class="input-group mb-3">
-      <input type="text" id="valor_unitario" class="form-control" placeholder="Valor unitario"
-        aria-label="Valor unitario" aria-describedby="basic-addon2" />
-    </div>
-
-    <div class="form-floating">
-      <select class="form-select" aria-label="Floating label select example" name="edicionEstado" id="estadoproducto">
-        <optgroup>
-          <option value="">Seleccione</option>
-          <option value="pendiente">Disponible</option>
-          <option value="autorizado">No Disponible</option>
-        </optgroup>
-      </select>
-      <label for="floatingSelect">Estado: </label>
-    </div>
-
-    <br />
-    <p align="right">
-      <input type="button" value="Confirmar" id="botonConfirmar" class="btn btn-dark" />
-    </p>
-  </div>
+  
 
 
 
