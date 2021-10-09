@@ -190,20 +190,17 @@ const cargarBotones = () => {
         $("#valor_unitario").val(valorProducto);
         $("#inputEstadoProducto").html(``);
         estadoProducto == "Disponible" ?
-            $("#inputEstadoProducto").append(`      
-        
-           <option value="">Seleccione</option>
-           <option value="1" selected>Disponible</option>
-           <option value="2">No Disponible</option>
-        
-      `) :
+            $("#inputEstadoProducto").append(`              
+                <option value="">Seleccione</option>
+                <option value="1" selected>Disponible</option>
+                <option value="2">No Disponible</option>        
+          `) :
             $("#inputEstadoProducto").append(`      
       
-         <option value="">Seleccione</option>
-         <option value="1" >Disponible</option>
-         <option value="2" selected>No Disponible</option>
-      
-    `);
+            <option value="">Seleccione</option>
+            <option value="1" >Disponible</option>
+            <option value="2" selected>No Disponible</option>      
+          `);
 
     });
 };
@@ -234,7 +231,7 @@ $('#botonConfirmar').click((e) => {
 
 
 
-        database.collection("productos").where("id", "==", idRegistro)
+    database.collection("productos").where("id", "==", idRegistro)
         .get()
         .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
@@ -246,6 +243,17 @@ $('#botonConfirmar').click((e) => {
                     valor: valorProducto
                 });
             });
-        }).then(alert("Actulizado con éxito")).then(()=> buscarDB());
+        }).then(alert("Actulizado con éxito")).then(() => buscarDB(),resetCamposFormulario());
 
 });
+
+const resetCamposFormulario = () => {
+    $("#descripcion_producto").val("");
+    $("#valor_unitario").val("");
+    $("#inputEstadoProducto").html(``);
+    $("#inputEstadoProducto").append(`              
+            <option value="" selected>Seleccione</option>
+            <option value="1" >Disponible</option>
+            <option value="2">No Disponible</option>        
+      `) 
+};
