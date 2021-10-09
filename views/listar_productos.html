@@ -84,7 +84,7 @@
                     <th scope="col">Descripci&oacute;n</th>
                     <th scope="col">Valor Unit.</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Editar</th>
+                    <!-- <th scope="col">Editar</th>  --> <!--HU_014 - Integración Backend Productos - Consulta Productos Se oculta campo editar -->
                 </tr>
             </thead>
 
@@ -103,30 +103,38 @@
         <br />
 
         <div class="input-group mb-3">
+            <!-- <input type="text" id="descripcion_producto" class="form-control" placeholder="Descripci&oacute;n producto"
+                aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" /> --> <!--HU_014 - Integración Backend Productos - Consulta Productos Se oculta campo-->
             <input type="text" id="descripcion_producto" class="form-control" placeholder="Descripci&oacute;n producto"
-                aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" />
+                aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" style="display: none"/> <!--HU_014 - Integración Backend Productos - Consulta Productos -->
         </div>
 
         <div class="input-group mb-3">
+            <!-- <input type="text" id="valor_unitario" class="form-control" placeholder="Valor unitario"
+                aria-label="Valor unitario" aria-describedby="basic-addon2" /> --> <!--HU_014 - Integración Backend Productos - Consulta Productos Se oculta campo-->
             <input type="text" id="valor_unitario" class="form-control" placeholder="Valor unitario"
-                aria-label="Valor unitario" aria-describedby="basic-addon2" />
+                aria-label="Valor unitario" aria-describedby="basic-addon2" style="display: none"/><!--HU_014 - Integración Backend Productos - Consulta Productos -->
         </div>
 
         <div class="form-floating">
+            <!-- <select class="form-select" aria-label="Floating label select example" name="edicionEstado"
+                id="estadoproducto"> --> <!--HU_014 - Integración Backend Productos - Consulta Productos Se oculta campo-->
             <select class="form-select" aria-label="Floating label select example" name="edicionEstado"
-                id="estadoproducto">
+                id="estadoproducto" style="display: none;"> <!--HU_014 - Integración Backend Productos - Consulta Productos -->
                 <optgroup>
                     <option value="">Seleccione</option>
                     <option value="pendiente">Disponible</option>
                     <option value="autorizado">No Disponible</option>
                 </optgroup>
             </select>
-            <label for="floatingSelect">Estado: </label>
+            <!-- <label for="floatingSelect">Estado: </label> --><!--HU_014 - Integración Backend Productos - Consulta Productos Se oculta campo-->
+            <label for="floatingSelect" style="display: none;">Estado: </label><!--HU_014 - Integración Backend Productos - Consulta Productos -->
         </div>
 
         <br />
         <p align="right">
-            <input type="button" value="Confirmar" id="confirmar" class="btn btn-dark" />
+            <!-- <input type="button" value="Confirmar" id="confirmar" class="btn btn-dark" /> --> <!--HU_014 - Integración Backend Productos - Consulta Productos Se oculta boton confirmar -->
+            <input type="button" value="Confirmar" id="confirmar" class="btn btn-dark" style="display: none"/><!--HU_014 - Integración Backend Productos - Consulta Productos-->
         </p>
     </div>
 
