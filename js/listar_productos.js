@@ -1,11 +1,11 @@
-let numId = document.getElementById("id")
-let strDescripcionProducto = document.getElementById("descripcion_producto")
+let numId = document.getElementById("inputIdProducto")
+let strDescripcionProducto = document.getElementById("inputDescripcionProducto")
 let numVal = document.getElementById("valor_unitario")
 let strEstado = document.getElementById("estadoproducto")
-let btnbuscar = document.getElementById("buscar")
-let btnlimpiar = document.getElementById("limpiar")
+let btnbuscar = document.getElementById("botonBuscarProducto")
+let btnlimpiar = document.getElementById("botonLimpiarBusqueda")
 let strEstadoConfirm = document.getElementById("edicionEstado")
-let btnConfirmar = document.getElementById("confirmar")
+let btnConfirmar = document.getElementById("botonConfirmar")
 const NODATA = "No se encuentran datos"
 
 /*
