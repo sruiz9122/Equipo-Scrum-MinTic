@@ -55,7 +55,7 @@ async function loadItems() {
         const response = await db.collection('productos').get()
 
         response.forEach(function (item) {
-            console.log(item.data());
+            // console.log(item.data()); //HU_015 - Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción) Se deja linea en comentario
             productos.push(item.data())
         })
         return productos
@@ -95,28 +95,66 @@ async function fmostrar() { //HU_014 - Integración Backend Productos - Consulta
 
 }
 
-function fmostrarFiltradoid(filtered) {
+// HU_015 - INICIO Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción) Se comenta bloque de codigo y se ajusta
+// function fmostrarFiltradoid(filtered) {
+
+//     let pintarTabla = ``;
+
+//     filtered.forEach(usuario => {
+//         pintarTabla += `<tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
+//         feditar(usuario.id)
+//         $('#bodyTabla').html(pintarTabla)
+//     });
+
+// }
+
+// function fmostrarFiltrado(filtered) {
+
+//     let pintarTabla = ``;
+
+//     filtered.forEach(usuario => {
+//         pintarTabla += `<tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
+//         $('#bodyTabla').html(pintarTabla)
+//     });
+
+// }
+
+async function fmostrarFiltradoid(id) {
 
     let pintarTabla = ``;
-
-    filtered.forEach(usuario => {
-        pintarTabla += `<tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
-        feditar(usuario.id)
-        $('#bodyTabla').html(pintarTabla)
+    console.clear();
+    console.log('Id consultado: ' + id);
+    productos = await loadItems()
+    productos.forEach(element => {
+        if (id == `${element.id}`) {
+            pintarTabla += `<tr><th scope="row">${element.id}</th><th>${element.descripcion}</th><th>${element.valor}</th><th>${element.estado}</th></tr>`
+            $('#bodyTabla').html(pintarTabla)
+        }
     });
 
 }
 
-function fmostrarFiltrado(filtered) {
+async function fmostrarFiltrado(descripcion) {
 
     let pintarTabla = ``;
-
-    filtered.forEach(usuario => {
-        pintarTabla += `<tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
-        $('#bodyTabla').html(pintarTabla)
-    });
-
+    let descrip = ''
+    console.clear();
+    console.log('Descripcion consultada: ' + descripcion);
+    productos = await loadItems()
+    descripcion = descripcion.toLowerCase();
+    productos.forEach(element => {
+        descrip = `${element.descripcion}`
+        descrip = descrip.toLowerCase();
+        if (descrip.includes(descripcion)) {
+            pintarTabla += `<tr><th scope="row">${element.id}</th><th>${element.descripcion}</th><th>${element.valor}</th><th>${element.estado}</th></tr>`
+            $('#bodyTabla').html(pintarTabla)
+        }
+    })
 }
+
+// HU_015 - FIN Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción) 
+
+
 
 /*
 Funcion de búsqueda
@@ -134,7 +172,19 @@ function getSearch() {
 
     if (id == '' && descripcion == '' && valor == '' && estado == '') {
         fmostrar()
-    } /* else if (id > 0 && id <= usuarios.length) {
+    }
+    // HU_015 - INICIO Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción)
+    else if (id != '' && descripcion == '') {
+        fmostrarFiltradoid(id)
+    }
+    else if (id == '' && descripcion != '') {
+        fmostrarFiltrado(descripcion)
+    }
+    else if(id != '' && descripcion != ''){
+        fmostrarFiltradoid(id)
+    }
+    // HU_015 - FIN Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción)
+    /* else if (id > 0 && id <= usuarios.length) {
 
         const filtered = usuarios.filter(function (element) {
             return element.id == id;

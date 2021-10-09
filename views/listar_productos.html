@@ -66,11 +66,16 @@
 
         <!-- Opciones de Búsqueda -->
         <div class="input-group mb-3">
-            <input type="number" id="id" class="form-control" placeholder="Id producto" aria-label="Id producto"
+            <!-- HU_015 - INICIO Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción) Se cambia el tipo de dato de id a texto y se cambia el id de descripcion producto -->
+            <!-- <input type="number" id="id" class="form-control" placeholder="Id producto" aria-label="Id producto" -->
+                <!-- aria-describedby="basic-addon2" /> -->
+            <!-- <input type="text" id="descripcion_producti" class="form-control" placeholder="Descripci&oacute;n producto" -->
+                <!-- aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" /> -->
+            <input type="text" id="id" class="form-control" placeholder="Id producto" aria-label="Id producto"
                 aria-describedby="basic-addon2" />
-            <input type="text" id="descripcion_producti" class="form-control" placeholder="Descripci&oacute;n producto"
+            <input type="text" id="descripcion_producto" class="form-control" placeholder="Descripci&oacute;n producto"
                 aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" />
-
+            <!-- HU_015 - FIN Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción) -->
             <!-- Botón -->
             <input type="button" value="Buscar" id="buscar" class="btn btn-dark" />
             <input type="button" value="Limpiar" id="limpiar" class="btn btn-dark" />
