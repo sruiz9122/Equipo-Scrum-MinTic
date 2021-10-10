@@ -171,6 +171,7 @@ $('#botonConfirmar').click((e) => {
 
 //Función que limpia los campos del formulario de edición una vez se confirma la actualización de los datos
 const resetCamposFormulario = () => {
+    idRegistro = 0;
     $("#descripcion_producto").val("");
     $("#valor_unitario").val("");
     $("#inputEstadoProducto").html(``);
