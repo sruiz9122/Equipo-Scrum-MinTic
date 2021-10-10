@@ -81,15 +81,6 @@
           <input type="number" id="valor_unitario" class="form-control" placeholder="Valor unitario"
             aria-label="Valor unitario" aria-describedby="basic-addon2" required />
         </div>
-        <label for="floatingSelect">Estado: </label>
-        <!--     <div class="form-floating">
-      <select class="form-select" aria-label="Floating label select example" name="edicionEstado" id="estadoproducto" required="required">
-        <optgroup>
-          <option value="">Seleccione</option>
-          <option value="Disponible">Disponible</option>
-          <option value="No Disponible">No Disponible</option>
-        </optgroup>
-      </select> -->
         <label for="inputEstadoProducto" class="form-label">Estado</label>
         <select id="inputEstadoProducto" class="form-select" required="required">
           <option value="" class="text-muted">Seleccione un estado</option>
@@ -99,11 +90,47 @@
 
       </div>
       <div class="d-flex justify-content-end mt-2">
-        <button type="submit" id="botonConfirmar" class="btn btn-dark">
+        <button type="submit" id="botonConfirmar" class="btn btn-dark" >
           Confirmar Edición
         </button>
       </div>
       <br />
+
+
+      <!-- Button trigger modal -->
+<!--       <div class="col-12 mt-5 d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+          data-bs-target="#modalConfirmacionRegistro">
+          Actualizar Producto
+        </button>
+      </div> -->
+      <!--  <div class="col-12 mt-5 d-flex justify-content-center">
+  <button type="submit" class="btn btn-primary" data-bs-toggle="modal" id="botonRegistrarProducto">
+      Registrar Producto
+  </button>
+</div> -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalConfirmacionRegistro" tabindex="-1"
+        aria-labelledby="modalConfirmacionRegistroLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalConfirmacionRegistroLabel">Confirmación</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              El producto ha sido actualizado.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                id="btnGuardarCambios">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- <br />
     <p align="right">
       <input type="button" value="Confirmar" id="botonConfirmar" class="btn btn-dark" />
@@ -124,7 +151,7 @@
       <tbody id="bodyTabla"></tbody>
     </table>
   </div>
-  
+
   <footer>
     <br />
     <center>

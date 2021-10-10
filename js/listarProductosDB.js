@@ -39,12 +39,7 @@ const buscarDB = async () => {
         else if (id != '' && descripcion != '') {
             fmostrarFiltradoid(id, listaProductos);
         }
-
-
         // pintarBrowser(listaProductos);
-
-
-
 
     } catch (error) {
         console.error(error);
@@ -53,7 +48,7 @@ const buscarDB = async () => {
 };
 
 //Función para pintar la tabla de resultados de búsqueda
-function pintarBrowser(elementos) {
+/* function pintarBrowser(elementos) {
     console.log(elementos);
     let contenido = ``;
     elementos.forEach(element => {
@@ -69,7 +64,7 @@ function pintarBrowser(elementos) {
 
     cargarBotones();
     //contendorTarea.innerHTML = contenidoHtml;
-}
+} */
 
 //Base de datos--------------------------------
 //Función que hace un GetAll de todos los registros
@@ -158,14 +153,14 @@ $('#botonConfirmar').click((e) => {
             .get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    console.log(doc.id, " => ", doc.data());
+                    //console.log(doc.id, " => ", doc.data());
                     database.collection("productos").doc(doc.id).update({
                         descripcion: descripcionProducto,
                         estado: textoEstadoProducto,
                         valor: valorProducto
                     });
                 });
-            }).then(alert("Actualizado con éxito")).then(() => buscarDB(), resetCamposFormulario());
+            }).then(()=>{$('#modalConfirmacionRegistro').modal("show")}).then(() => buscarDB(), resetCamposFormulario());
     }
 });
 
@@ -207,8 +202,8 @@ async function loadItems() {
 Botones
 */
 // btnbuscar.addEventListener("click", getSearch);
-/* btnlimpiar.addEventListener("click", clearSearch());
-btnConfirmar.addEventListener("click", getConfirm()); */
+btnlimpiar.addEventListener('click', (e) => {clearSearch()});
+// btnConfirmar.addEventListener("click", getConfirm());
 
 /*
 Funciones que pintan en pantalla
@@ -326,22 +321,11 @@ Funcion de búsqueda
 Función que permite limpiar la pantalla
 */
 function clearSearch() {
-    console.log("Entra clearSearch");
-    let usuarioFilter = document.getElementById("bodyTabla");
-    let lblUsuariEdit = document.getElementById("usuarioeditar");
-    let pintarLabel = `<h3 align="center"></h3>`;
-
-    //Limpia filtros de consulta
-    numId.value = '';
-    strDescripcionProducto.value = '';
-    /*     numVal.value = '';
-        strEstado.value = ''; */
-
-    //Limpia la tabla
-    usuarioFilter.innerHTML = '';
-
-    //Limpiar campos de edición
-    lblUsuariEdit.innerHTML = pintarLabel;
+   
+    $("#inputIdProducto").val("");
+    $("#inputDescripcionProducto").val("");
+     //   let pintarLabel = `<h3 align="center"></h3>`;
+  
 }
 
 /*
