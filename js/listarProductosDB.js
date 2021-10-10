@@ -138,7 +138,10 @@ $('#botonConfirmar').click((e) => {
 
     const textoEstadoProducto = $("#inputEstadoProducto option:selected").text();
     //  console.log(textoEstadoProducto)
-    if (!descripcionProducto || !valorProducto || !estadoProducto) {
+    if (!idRegistro) {
+        alert("Debes seleccionar un producto primero para poder Editar");
+    }
+    else if (!descripcionProducto || !valorProducto || !estadoProducto) {
         alert("No deben exsitir campos vacios");
         // TESTING------------------------:
         // console.log(descripcionProducto);
@@ -151,22 +154,19 @@ $('#botonConfirmar').click((e) => {
         // console.log(valorProducto);
         // console.log(estadoProducto);
         // console.log(textoEstadoProducto);
-    }
-
-
-    database.collection("productos").where("id", "==", idRegistro)
-        .get()
-        .then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                console.log(doc.id, " => ", doc.data());
-                database.collection("productos").doc(doc.id).update({
-                    descripcion: descripcionProducto,
-                    estado: textoEstadoProducto,
-                    valor: valorProducto
+        database.collection("productos").where("id", "==", idRegistro)
+            .get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    console.log(doc.id, " => ", doc.data());
+                    database.collection("productos").doc(doc.id).update({
+                        descripcion: descripcionProducto,
+                        estado: textoEstadoProducto,
+                        valor: valorProducto
+                    });
                 });
-            });
-        }).then(alert("Actualizado con éxito")).then(() => buscarDB(), resetCamposFormulario());
-
+            }).then(alert("Actualizado con éxito")).then(() => buscarDB(), resetCamposFormulario());
+    }
 });
 
 //Función que limpia los campos del formulario de edición una vez se confirma la actualización de los datos
