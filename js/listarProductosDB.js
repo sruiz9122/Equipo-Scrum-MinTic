@@ -21,9 +21,31 @@ const NODATA = "No se encuentran datos";
 
 //Función que busca y e implmeenta pintar en pantalla la tabla con los resultados de búsqueda
 const buscarDB = async () => {
+    resetCamposFormulario();
     try {
+        let id = numId.value;
+        let descripcion = strDescripcionProducto.value;
         listaProductos = await leerProductos();
-        pintarBrowser(listaProductos);
+        if (id == '' && descripcion == '') {
+            fmostrar(listaProductos);
+        }
+        // HU_015 - INICIO Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción)
+        else if (id != '' && descripcion == '') {
+            fmostrarFiltradoid(id, listaProductos);
+        }
+        else if (id == '' && descripcion != '') {
+            fmostrarFiltrado(descripcion, listaProductos);
+        }
+        else if (id != '' && descripcion != '') {
+            fmostrarFiltradoid(id, listaProductos);
+        }
+
+
+        // pintarBrowser(listaProductos);
+
+
+
+
     } catch (error) {
         console.error(error);
         throw new Error(error);
@@ -31,7 +53,7 @@ const buscarDB = async () => {
 };
 
 //Función para pintar la tabla de resultados de búsqueda
-function pintarBrowser(elementos) {    
+function pintarBrowser(elementos) {
     console.log(elementos);
     let contenido = ``;
     elementos.forEach(element => {
@@ -46,7 +68,7 @@ function pintarBrowser(elementos) {
     });
 
     cargarBotones();
-    /* contendorTarea.innerHTML = contenidoHtml; */
+    //contendorTarea.innerHTML = contenidoHtml;
 }
 
 //Base de datos--------------------------------
@@ -55,7 +77,7 @@ const leerProductos = async () => {
     const productos = [];
     const respuesta = await database.collection('productos').get();
     respuesta.forEach(function (item) {
-         console.log(item.data());
+        console.log(item.data());
         productos.push(item.data());
     });
     return productos;
@@ -92,13 +114,13 @@ const cargarBotones = () => {
         $("#inputEstadoProducto").html(``);
         estadoProducto == "Disponible" ?
             $("#inputEstadoProducto").append(`              
-                <option value="">Seleccione</option>
+                <option value="">Seleccione un estado</option>
                 <option value="1" selected>Disponible</option>
                 <option value="2">No Disponible</option>        
           `) :
             $("#inputEstadoProducto").append(`      
       
-            <option value="">Seleccione</option>
+            <option value="">Seleccione un estado</option>
             <option value="1" >Disponible</option>
             <option value="2" selected>No Disponible</option>      
           `);
@@ -143,7 +165,7 @@ $('#botonConfirmar').click((e) => {
                     valor: valorProducto
                 });
             });
-        }).then(alert("Actulizado con éxito")).then(() => buscarDB(),resetCamposFormulario());
+        }).then(alert("Actualizado con éxito")).then(() => buscarDB(), resetCamposFormulario());
 
 });
 
@@ -153,64 +175,103 @@ const resetCamposFormulario = () => {
     $("#valor_unitario").val("");
     $("#inputEstadoProducto").html(``);
     $("#inputEstadoProducto").append(`              
-            <option value="" selected>Seleccione</option>
+            <option value="" selected>Seleccione un estado</option>
             <option value="1" >Disponible</option>
             <option value="2">No Disponible</option>        
-      `) 
+      `);
 };
 
 //----------------------------------------------
 //          HU14 - HU15:
 //----------------------------------------------
 
+// Carga los datos de Firestore
+async function loadItems() {
+    console.log("Entra LoadItems");
+    listaProductos = [];
+    try {
+        const response = await database.collection('productos').get();
+        response.forEach(function (item) {
+            // console.log(item.data()); //HU_015 - Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción) Se deja linea en comentario
+            listaProductos.push(item.data());
+        });
+        // console.log(listaProductos);
+        return listaProductos;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 /*
 Botones
 */
-btnbuscar.addEventListener("click", getSearch)
-btnlimpiar.addEventListener("click", clearSearch)
-btnConfirmar.addEventListener("click", getConfirm)
+// btnbuscar.addEventListener("click", getSearch);
+/* btnlimpiar.addEventListener("click", clearSearch());
+btnConfirmar.addEventListener("click", getConfirm()); */
 
 /*
 Funciones que pintan en pantalla
 */
-/* async function fmostrar() { //HU_014 - Integración Backend Productos - Consulta Productos
+async function fmostrar(listaProductos) { //HU_014 - Integración Backend Productos - Consulta Productos
+    console.log("Entra fmostrar");
     let contenido = ``;
-    productos = await loadItems()
-    productos.forEach(element => {
-        contenido += `<tr><th scope="row">${element.id}</th><th>${element.descripcion}</th><th>${element.valor}</th><th>${element.estado}</th></tr>`
-        $('#bodyTabla').html(contenido)
-    }); 
-} */
-
-// HU_015 - INICIO Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción) Se comenta bloque de codigo y se ajusta
-async function fmostrarFiltradoid(id) {
-    let pintarTabla = ``;
-    console.clear();
-    console.log('Id consultado: ' + id);
-    productos = await loadItems()
-    productos.forEach(element => {
-        if (id == `${element.id}`) {
-            pintarTabla += `<tr><th scope="row">${element.id}</th><th>${element.descripcion}</th><th>${element.valor}</th><th>${element.estado}</th></tr>`
-            $('#bodyTabla').html(pintarTabla)
-        }
+    //listaProductos = await loadItems();
+    listaProductos.forEach(element => {
+        contenido += `<tr>
+                        <td scope="row">${element.id}</td>
+                        <td>${element.descripcion}</td>
+                        <td>${element.valor}</td>
+                        <td>${element.estado}</td>
+                        <td><input type="button" value="Editar" id="${element.id}" class="botonEditar btn btn-dark" /></td>
+                    </tr>`;
+        $('#bodyTabla').html(contenido);
     });
+    cargarBotones();
 }
 
-async function fmostrarFiltrado(descripcion) {
+// HU_015 - INICIO Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción) Se comenta bloque de codigo y se ajusta
+async function fmostrarFiltradoid(id, listaProductos) {
+    console.log("Entra fmostrarFiltradoid");
     let pintarTabla = ``;
-    let descrip = ''
-    console.clear();
+    console.log('Id consultado: ' + id);
+    //listaProductos = await loadItems();
+    listaProductos.forEach(element => {
+        if (id == `${element.id}`) {
+            pintarTabla += `<tr>
+            <td scope="row">${element.id}</td>
+            <td>${element.descripcion}</td>
+            <td>${element.valor}</td>
+            <td>${element.estado}</td>
+            <td><input type="button" value="Editar" id="${element.id}" class="botonEditar btn btn-dark" /></td>
+        </tr>`;
+            $('#bodyTabla').html(pintarTabla);
+        }
+    });
+    cargarBotones();
+}
+
+async function fmostrarFiltrado(descripcion, listaProductos) {
+    let pintarTabla = ``;
+    let descrip = '';
     console.log('Descripcion consultada: ' + descripcion);
-    productos = await loadItems()
+    // listaProductos = await loadItems();
     descripcion = descripcion.toLowerCase();
-    productos.forEach(element => {
-        descrip = `${element.descripcion}`
+    listaProductos.forEach(element => {
+        descrip = `${element.descripcion}`;
         descrip = descrip.toLowerCase();
         if (descrip.includes(descripcion)) {
-            pintarTabla += `<tr><th scope="row">${element.id}</th><th>${element.descripcion}</th><th>${element.valor}</th><th>${element.estado}</th></tr>`
-            $('#bodyTabla').html(pintarTabla)
-        }
-    })
+            pintarTabla += `<tr>
+            <td scope="row">${element.id}</td>
+            <td>${element.descripcion}</td>
+            <td>${element.valor}</td>
+            <td>${element.estado}</td>
+            <td><input type="button" value="Editar" id="${element.id}" class="botonEditar btn btn-dark" /></td>
+        </tr>`;
+            $('#bodyTabla').html(pintarTabla);
+        } 
+    });
+
+    cargarBotones();
 }
 
 // HU_015 - FIN Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción) 
@@ -219,30 +280,31 @@ async function fmostrarFiltrado(descripcion) {
 Funcion de búsqueda
 */
 /* function getSearch() {
-    console.clear()
-    let id = numId.value
-    let descripcion = strDescripcionProducto.value
-    let valor = numVal.value
-    let estado = strEstado.value
+    resetCamposFormulario();
+    console.log("entra getSearch");
 
-    if (id == '' && descripcion == '' && valor == '' && estado == '') {
-        fmostrar()
+    let id = numId.value;
+    let descripcion = strDescripcionProducto.value;
+   
+   
+    if (id == '' && descripcion == '') {
+        fmostrar();
     }
     // HU_015 - INICIO Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción)
     else if (id != '' && descripcion == '') {
-        fmostrarFiltradoid(id)
+        fmostrarFiltradoid(id);
     }
     else if (id == '' && descripcion != '') {
-        fmostrarFiltrado(descripcion)
+        fmostrarFiltrado(descripcion);
     }
-    else if(id != '' && descripcion != ''){
+    else if (id != '' && descripcion != '') {
         console.clear();
-        fmostrarFiltradoid(id)
+        fmostrarFiltradoid(id);
     }
     // HU_015 - FIN Integración  Backend Productos - Consulta Productos (Filtro Id o Descripción)
-   
-   else {
-        alert(NODATA)
+
+    else {
+        alert(NODATA);
     }
 } */
 
@@ -250,21 +312,22 @@ Funcion de búsqueda
 Función que permite limpiar la pantalla
 */
 function clearSearch() {
-    let usuarioFilter = document.getElementById("bodyTabla")
-    let lblUsuariEdit = document.getElementById("usuarioeditar")
-    let pintarLabel = `<h3 align="center"></h3>`
+    console.log("Entra clearSearch");
+    let usuarioFilter = document.getElementById("bodyTabla");
+    let lblUsuariEdit = document.getElementById("usuarioeditar");
+    let pintarLabel = `<h3 align="center"></h3>`;
 
     //Limpia filtros de consulta
-    numId.value = ''
-    strDescripcionProducto.value = ''
-    numVal.value = ''
-    strEstado.value = ''
+    numId.value = '';
+    strDescripcionProducto.value = '';
+    /*     numVal.value = '';
+        strEstado.value = ''; */
 
     //Limpia la tabla
-    usuarioFilter.innerHTML = ''
+    usuarioFilter.innerHTML = '';
 
     //Limpiar campos de edición
-    lblUsuariEdit.innerHTML = pintarLabel
+    lblUsuariEdit.innerHTML = pintarLabel;
 }
 
 /*
