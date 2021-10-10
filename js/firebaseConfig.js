@@ -1,11 +1,11 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyBP9LC_zZo-zFFko4s7Ju5QkbuJAASJmCw",
-    authDomain: "courageous-code.firebaseapp.com",
-    projectId: "courageous-code",
-    storageBucket: "courageous-code.appspot.com",
-    messagingSenderId: "556418795208",
-    appId: "1:556418795208:web:9e2249ecbafd02bbd787fd"
+    apiKey: "AIzaSyAefc0z24es6ZxuyByHtHq1Ge3g1aZ1w5Y",
+    authDomain: "venta-gasolina.firebaseapp.com",
+    projectId: "venta-gasolina",
+    storageBucket: "venta-gasolina.appspot.com",
+    messagingSenderId: "409892502100",
+    appId: "1:409892502100:web:395dc3450c02975d4b4bc1"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
