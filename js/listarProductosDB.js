@@ -77,7 +77,7 @@ const leerProductos = async () => {
     const productos = [];
     const respuesta = await database.collection('productos').get();
     respuesta.forEach(function (item) {
-        console.log(item.data());
+        // console.log(item.data());
         productos.push(item.data());
     });
     return productos;
@@ -235,42 +235,55 @@ async function fmostrarFiltradoid(id, listaProductos) {
     let pintarTabla = ``;
     console.log('Id consultado: ' + id);
     //listaProductos = await loadItems();
-    listaProductos.forEach(element => {
-        if (id == `${element.id}`) {
+
+    const listaFiltrada = listaProductos.filter(
+        (element) => element.id == id);
+    console.log(listaFiltrada);
+
+    if (listaFiltrada.length) {
+        listaFiltrada.map(element => {
             pintarTabla += `<tr>
-            <td scope="row">${element.id}</td>
-            <td>${element.descripcion}</td>
-            <td>${element.valor}</td>
-            <td>${element.estado}</td>
-            <td><input type="button" value="Editar" id="${element.id}" class="botonEditar btn btn-dark" /></td>
-        </tr>`;
+                            <td scope="row">${element.id}</td>
+                            <td>${element.descripcion}</td>
+                            <td>${element.valor}</td>
+                            <td>${element.estado}</td>
+                            <td><input type="button" value="Editar" id="${element.id}" class="botonEditar btn btn-dark" /></td>
+                        </tr>`;
             $('#bodyTabla').html(pintarTabla);
-        }
-    });
+        });
+    } else {
+        $('#bodyTabla').html(`<h2 class="text-danger">NO ENCONTRADO</h2>`);
+    }
+
     cargarBotones();
 }
 
 async function fmostrarFiltrado(descripcion, listaProductos) {
     let pintarTabla = ``;
     let descrip = '';
+    // $('#bodyTabla').html(pintarTabla);
     console.log('Descripcion consultada: ' + descripcion);
     // listaProductos = await loadItems();
     descripcion = descripcion.toLowerCase();
-    listaProductos.forEach(element => {
-        descrip = `${element.descripcion}`;
-        descrip = descrip.toLowerCase();
-        if (descrip.includes(descripcion)) {
-            pintarTabla += `<tr>
-            <td scope="row">${element.id}</td>
-            <td>${element.descripcion}</td>
-            <td>${element.valor}</td>
-            <td>${element.estado}</td>
-            <td><input type="button" value="Editar" id="${element.id}" class="botonEditar btn btn-dark" /></td>
-        </tr>`;
-            $('#bodyTabla').html(pintarTabla);
-        } 
-    });
+    const listaFiltrada = listaProductos.filter(
+        (element) => element.descripcion.toLowerCase().includes(descripcion));
 
+    if (listaFiltrada.length) {
+        listaFiltrada.map(element => {
+            pintarTabla += `<tr>
+                            <td scope="row">${element.id}</td>
+                            <td>${element.descripcion}</td>
+                            <td>${element.valor}</td>
+                            <td>${element.estado}</td>
+                            <td><input type="button" value="Editar" id="${element.id}" class="botonEditar btn btn-dark" /></td>
+                        </tr>`;
+            $('#bodyTabla').html(pintarTabla);
+        });
+    } else {
+        $('#bodyTabla').html(`<h2 class="text-danger">NO ENCONTRADO</h2>`);
+    }
+
+    //console.log(listaFiltrada);
     cargarBotones();
 }
 
