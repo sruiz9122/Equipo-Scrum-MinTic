@@ -31,9 +31,6 @@
             <li class="nav-item">
               <a class="nav-link active d-flex" href="./maestroUsuarios.html">Maestro usuarios</a>
             </li>
-
-
-
           </ul>
           <div class="navbar-nav nav-item container d-flex flex-wrap justify-content-end  ">
             <a href="#" class="d-none d-sm-block link-dark text-decoration-none perfil-img-interna">
@@ -44,11 +41,7 @@
               <button type="button" class="btn btn-primary">Cerrar Sesión</button>
             </div>
           </div>
-
-
-
         </div>
-
       </div>
     </nav>
 
@@ -60,40 +53,36 @@
     </section>
   </main>
   <div class="container">
-
     <div>
       <!-- Titulo -->
       <h3 class="h3" align="right">Actualizar productos</h3>
     </div>
-
     <!-- Opciones de Búsqueda -->
     <div class="input-group mb-3">
-      <input type="number" id="inputIdProducto" class="form-control" placeholder="Id producto" aria-label="Id producto"
+      <input type="text" id="inputIdProducto" class="form-control" placeholder="Id producto" aria-label="Id producto"
         aria-describedby="basic-addon2" />
       <input type="text" id="inputDescripcionProducto" class="form-control" placeholder="Descripci&oacute;n producto"
         aria-label="Descripción de producto" aria-describedby="basic-addon2" />
-
       <!-- Botón -->
       <input type="button" value="Buscar" id="botonBuscarProducto" class="btn btn-dark" />
       <input type="button" value="Limpiar" id="botonLimpiarBusqueda" class="btn btn-dark" />
     </div>
-
-<!-- Resultado de Edición -->
-<form action="">
-  <div class="formEdicionProductos">
-    <div id="usuarioeditar">
-    </div>
-    <br />
-    <div class="input-group mb-3">
-      <input type="text" id="descripcion_producto" class="form-control" placeholder="Descripci&oacute;n producto"
-        aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" required />
-    </div>
-    <div class="input-group mb-3">
-      <input type="number" id="valor_unitario" class="form-control" placeholder="Valor unitario"
-        aria-label="Valor unitario" aria-describedby="basic-addon2" required />
-    </div>
-    <label for="floatingSelect">Estado: </label>
-<!--     <div class="form-floating">
+    <!-- Resultado de Edición -->
+    <form action="">
+      <div class="formEdicionProductos">
+        <div id="usuarioeditar">
+        </div>
+        <br />
+        <div class="input-group mb-3">
+          <input type="text" id="descripcion_producto" class="form-control" placeholder="Descripci&oacute;n producto"
+            aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" required />
+        </div>
+        <div class="input-group mb-3">
+          <input type="number" id="valor_unitario" class="form-control" placeholder="Valor unitario"
+            aria-label="Valor unitario" aria-describedby="basic-addon2" required />
+        </div>
+        <label for="floatingSelect">Estado: </label>
+        <!--     <div class="form-floating">
       <select class="form-select" aria-label="Floating label select example" name="edicionEstado" id="estadoproducto" required="required">
         <optgroup>
           <option value="">Seleccione</option>
@@ -101,28 +90,26 @@
           <option value="No Disponible">No Disponible</option>
         </optgroup>
       </select> -->
-      <label for="inputEstadoProducto" class="form-label">Estado</label>
-      <select id="inputEstadoProducto" class="form-select" required="required">
-        <option value="" class="text-muted">Elija un estado</option>
-        <option value="1">Disponible</option>
-        <option value="2">No disponible</option>
-      </select>
-  
-    </div>
-    <div class="d-flex justify-content-end mt-2">
-      <button type="submit"  id="botonConfirmar" class="btn btn-dark">
-        Confirmar Edición
+        <label for="inputEstadoProducto" class="form-label">Estado</label>
+        <select id="inputEstadoProducto" class="form-select" required="required">
+          <option value="" class="text-muted">Elija un estado</option>
+          <option value="1">Disponible</option>
+          <option value="2">No disponible</option>
+        </select>
+
+      </div>
+      <div class="d-flex justify-content-end mt-2">
+        <button type="submit" id="botonConfirmar" class="btn btn-dark">
+          Confirmar Edición
         </button>
-    </div>
-  <br />
-    <!-- <br />
+      </div>
+      <br />
+      <!-- <br />
     <p align="right">
       <input type="button" value="Confirmar" id="botonConfirmar" class="btn btn-dark" />
     </p> -->
-  </div>
-</form>
 
-
+    </form>
     <!-- Tabla resultado busqueda -->
     <table class="table">
       <thead class="table table-dark">
@@ -134,17 +121,10 @@
           <th scope="col">Editar</th>
         </tr>
       </thead>
-
+      <tbody id="bodyTabla"></tbody>
+    </table>
   </div>
-  <tbody id="bodyTabla"></tbody>
-  </table>
-
   
-
-
-
-  </div>
-
   <footer>
     <br />
     <center>
