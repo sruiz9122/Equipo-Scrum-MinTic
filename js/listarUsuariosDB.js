@@ -4,23 +4,16 @@ let listaUsuarios = [];
 // Variable para guardar el ID delusuario
 let idRegistro = 0;
 
-// // Variables DOM
-// //del proyecto
-// let numId = document.getElementById("inputIdProducto");
-// let strDescripcionProducto = document.getElementById("inputDescripcionProducto");
-// let numVal = document.getElementById("valor_unitario");
 
-// let strEstado = document.getElementById("estadoproducto");
 let btnbuscar = document.getElementById("botonBuscarUsuario");
 
-// let btnEditarProducto = document.
 
 let btnlimpiar = document.getElementById("botonLimpiarBusqueda");
 let strEstadoConfirm = document.getElementById("edicionEstado");
 let btnConfirmar = document.getElementById("botonConfirmar");
 const NODATA = "No se encuentran datos";
 
-//Función que busca y e implmeenta pintar en pantalla la tabla con los resultados de búsqueda
+//Función que busca y e implementa pintar en pantalla la tabla con los resultados de búsqueda
 const buscarDB = async () => {
   try {
     listaUsuarios = await leerUsuarios();
@@ -74,23 +67,14 @@ const cargarBotones = () => {
   $(".botonEditar").click(function (e) {
     idRegistro = e.target.id;
 
-    // LOGS de Testing-----------------------------------:
-    // console.log(e);
-    // console.log(e.target.id);
-    // // console.log($(e.target).parents().eq(1)[0]);
-    // // console.log($(e.target).parents().eq(1).children());
+    
     console.log($(e.target).parents().eq(1).children()[3].innerHTML);
     console.log($(e.target).parents().eq(1).children()[4].innerHTML);
-    // console.log($("#estadoproducto").eq(0)[0]);
-    // console.log($("#estadoproducto optgroup"));
-    // console.log($("#estadoproducto optgroup").children());
-    // console.log($("#estadoproducto optgroup").children()[1].innerHTML);
+   
 
     const rolUsuario = $(e.target).parents().eq(1).children()[3].innerHTML;
     const estadoUsuario = $(e.target).parents().eq(1).children()[4].innerHTML;
 
-    // $("#rolUsuario").val(rolUsuario);
-    // $("#valor_unitario").val(valorProducto);
     $("#rolUsuario").html(``);
     rolUsuario == "Administrador"
       ? $("#rolUsuario").append(`              
