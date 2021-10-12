@@ -29,7 +29,7 @@ let tbxFechaVenta = document.getElementById("inputFechaVenta")
 let tbxEstadoVenta = document.getElementById("inputEstadoVenta")
 let tbxDocIdCliente = document.getElementById("inputDocumentoIdentidadCliente")
 let tbxNombreCliente = document.getElementById("inputNombreCliente")
-let tbxIdVendedorAsignado = document.getElementById("inputNombreCliente")
+let tbxIdVendedorAsignado = document.getElementById("inputidvendedor")
 const btnRegistrarVenta = document.getElementById("btnregistrarventa")
 
 const db = firebase.firestore();
