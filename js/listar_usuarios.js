@@ -38,7 +38,7 @@ function edtitarUsuario(event) {
 
 /*
 Usuarios
-*/
+
 let eliana = {
     id: 1,
     nombre: `Eliana Navarro`,
@@ -97,9 +97,23 @@ let paola = {
 
 let usuarios = [eliana, andresm, andresb, juan, sergio, fredy, paola]
 
+
+
+
+
+
 /*
-Botones
+Conexión a la DB
 */
+
+
+
+const db = firebase.firestore();
+let usuarios = [];
+
+
+/* Botones*/
+
 btnbuscar.addEventListener("click", getSearch)
 btnlimpiar.addEventListener("click", clearSearch)
 btnConfirmar.addEventListener("click", getConfirm)
