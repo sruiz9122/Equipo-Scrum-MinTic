@@ -10,6 +10,32 @@ let strRolConfirm = document.getElementById("edicionRol")
 let btnConfirmar = document.getElementById("confirmar")
 const NODATA = "No se encuentran datos"
 
+const tablePrincipal = document.getElementById('tablaUsuarios')
+const divDetalleUsuario = document.getElementById('detalleUsuario')
+
+
+tablePrincipal.addEventListener('click', edtitarUsuario)
+
+function edtitarUsuario(event) {
+    const { type } = event.target
+
+    if (type) {
+        const id = Number.parseInt(event.target.dataset.id)
+        const user = usuarios.find((usuario) => usuario.id === id)
+        const htmlUser =
+            `
+          <h3>ID: <span class="badge bg-primary">${user.id}</span></h3>
+          <h3>Usuario: <span class="text-muted">${user.nombre}</span></h3>
+          <h3>Email: <span class="text-muted">${user.correo}</span></h3>
+        `
+        divDetalleUsuario.innerHTML = htmlUser;
+        strRolConfirm.value = user.rol.toLowerCase()
+        edicionEstado.value = user.estado.toLowerCase()
+    }
+
+}
+
+
 /*
 Usuarios
 */
@@ -80,13 +106,13 @@ btnConfirmar.addEventListener("click", getConfirm)
 
 /*
 Funciones que pintan en pantalla
-*/ 
+*/
 function fmostrar() {
 
     let contenido = ``;
     let a = 1
     usuarios.forEach(element => {
-        contenido += `<tr> <th scope="row">${element.id}</th> <th>${element.nombre}</th> <th>${element.correo}</th> <th>${element.rol}</th> <th>${element.estado}</th> <th><input type="button" value="Editar" id="teditar${a}" class="btn btn-dark" /></th></tr>`
+        contenido += `<tr> <th scope="row">${element.id}</th> <th>${element.nombre}</th> <th>${element.correo}</th> <th>${element.rol}</th> <th>${element.estado}</th> <th><input type="button" value="Editar" id="teditar${a}" data-id="${element.id}" class="btn btn-dark" /></th></tr>`
         $('#bodyTabla').html(contenido)
         a += 1
     });
@@ -203,7 +229,7 @@ function getSearch() {
 Función que permite limpiar la pantalla
 */
 function clearSearch() {
-    
+
     let usuarioFilter = document.getElementById("bodyTabla")
     let lblUsuariEdit = document.getElementById("usuarioeditar")
     let pintarLabel = `<h3 align="center"></h3>`
@@ -227,7 +253,7 @@ function clearSearch() {
 Función que permite Editar
 */
 function feditar(varEntrada) {
-    
+    console.log('Entro');
     let lblUsuariEdit = document.getElementById("usuarioeditar")
     let ajustaArr = varEntrada - 1
     let usuarioEdit = usuarios[ajustaArr]
