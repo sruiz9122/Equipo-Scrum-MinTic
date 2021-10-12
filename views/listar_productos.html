@@ -2,154 +2,181 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Listar Productos</title>
-    <!-- CSS Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listar Productos</title>
+  <!-- CSS Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-          <div class="container">
-            <a class="navbar-brand" href="#"><img src="../img/LOGO_TRANS_2.svg" alt="LogoCourageous" height="50px"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-nowrap text-center" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active d-flex " aria-current="page" href="./maestroVentas.html">Maestro Ventas</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active d-flex" href="./maestroProductos.html">Maestro Productos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active d-flex" href="./maestroUsuarios.html">Maestro usuarios</a>
-                </li>
-                
-                
-                
-              </ul>
-              <div class="navbar-nav nav-item container d-flex flex-wrap justify-content-end  ">
-                <a href="#" class="d-none d-sm-block link-dark text-decoration-none perfil-img-interna"  >
-                  <img  src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle imagen-logo " style="margin-right: 10px;  ">
-                </a>
-                <div class="navbar-nav text-end">
-                  <button type="button" class="btn btn-primary">Cerrar Sesión</button>
-                </div>
-              </div>
-    
-                
-              
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="../img/LOGO_TRANS_2.svg" alt="LogoCourageous" height="50px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-nowrap text-center" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active d-flex " aria-current="page" href="./maestroVentas.html">Maestro Ventas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active d-flex" href="./maestroProductos.html">Maestro Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active d-flex" href="./maestroUsuarios.html">Maestro usuarios</a>
+            </li>
+          </ul>
+          <div class="navbar-nav nav-item container d-flex flex-wrap justify-content-end  ">
+            <a href="#" class="d-none d-sm-block link-dark text-decoration-none perfil-img-interna">
+              <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle imagen-logo "
+                style="margin-right: 10px;  ">
+            </a>
+            <div class="navbar-nav text-end">
+              <button type="button" class="btn btn-primary">Cerrar Sesión</button>
             </div>
-            
           </div>
-        </nav>
-    
-      </header>
-
-    <main>
-        <section>
-            <article></article>
-        </section>
-    </main>
-    <div class="container">
-
-        <div>
-            <!-- Titulo -->
-            <h3 class="h3" align="right">Actualizar productos</h3>
         </div>
+      </div>
+    </nav>
 
-        <!-- Opciones de Búsqueda -->
-        <div class="input-group mb-3">
-            <input type="number" id="id" class="form-control" placeholder="Id producto" aria-label="Id producto"
-                aria-describedby="basic-addon2" />
-            <input type="text" id="descripcion_producti" class="form-control" placeholder="Descripci&oacute;n producto"
-                aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" />
+  </header>
 
-            <!-- Botón -->
-            <input type="button" value="Buscar" id="buscar" class="btn btn-dark" />
-            <input type="button" value="Limpiar" id="limpiar" class="btn btn-dark" />
-        </div>
-
-        <!-- Tabla resultado busqueda -->
-        <table class="table">
-            <thead class="table table-dark">
-                <tr>
-                    <th scope="col">Id Producto</th>
-                    <th scope="col">Descripci&oacute;n</th>
-                    <th scope="col">Valor Unit.</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Editar</th>
-                </tr>
-            </thead>
-
-    </div>
-    <tbody id="bodyTabla"></tbody>
-    </table>
-
-    <!-- Resultado de Edición -->
+  <main>
+    <section>
+      <article></article>
+    </section>
+  </main>
+  <div class="container">
     <div>
-
+      <!-- Titulo -->
+      <h3 class="h3" align="right">Actualizar productos</h3>
+    </div>
+    <!-- Opciones de Búsqueda -->
+    <div class="input-group mb-3">
+      <input type="text" id="inputIdProducto" class="form-control" placeholder="Id producto" aria-label="Id producto"
+        aria-describedby="basic-addon2" />
+      <input type="text" id="inputDescripcionProducto" class="form-control" placeholder="Descripci&oacute;n producto"
+        aria-label="Descripción de producto" aria-describedby="basic-addon2" />
+      <!-- Botón -->
+      <input type="button" value="Buscar" id="botonBuscarProducto" class="btn btn-dark" />
+      <input type="button" value="Limpiar" id="botonLimpiarBusqueda" class="btn btn-dark" />
+    </div>
+    <!-- Resultado de Edición -->
+    <form action="">
+      <div class="formEdicionProductos">
         <div id="usuarioeditar">
-
         </div>
-
-
         <br />
-
         <div class="input-group mb-3">
-            <input type="text" id="descripcion_producto" class="form-control" placeholder="Descripci&oacute;n producto"
-                aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" />
+          <input type="text" id="descripcion_producto" class="form-control" placeholder="Descripci&oacute;n producto"
+            aria-label="Descripci&oacute;n de producto" aria-describedby="basic-addon2" required />
         </div>
-
         <div class="input-group mb-3">
-            <input type="text" id="valor_unitario" class="form-control" placeholder="Valor unitario"
-                aria-label="Valor unitario" aria-describedby="basic-addon2" />
+          <input type="number" id="valor_unitario" class="form-control" placeholder="Valor unitario"
+            aria-label="Valor unitario" aria-describedby="basic-addon2" required />
         </div>
+        <label for="inputEstadoProducto" class="form-label">Estado</label>
+        <select id="inputEstadoProducto" class="form-select" required="required">
+          <option value="" class="text-muted">Seleccione un estado</option>
+          <option value="1">Disponible</option>
+          <option value="2">No disponible</option>
+        </select>
 
-        <div class="form-floating">
-            <select class="form-select" aria-label="Floating label select example" name="edicionEstado"
-                id="estadoproducto">
-                <optgroup>
-                    <option value="">Seleccione</option>
-                    <option value="pendiente">Disponible</option>
-                    <option value="autorizado">No Disponible</option>
-                </optgroup>
-            </select>
-            <label for="floatingSelect">Estado: </label>
+      </div>
+      <div class="d-flex justify-content-end mt-2">
+        <button type="submit" id="botonConfirmar" class="btn btn-dark" >
+          Confirmar Edición
+        </button>
+      </div>
+      <br />
+
+
+      <!-- Button trigger modal -->
+<!--       <div class="col-12 mt-5 d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+          data-bs-target="#modalConfirmacionRegistro">
+          Actualizar Producto
+        </button>
+      </div> -->
+      <!--  <div class="col-12 mt-5 d-flex justify-content-center">
+  <button type="submit" class="btn btn-primary" data-bs-toggle="modal" id="botonRegistrarProducto">
+      Registrar Producto
+  </button>
+</div> -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalConfirmacionRegistro" tabindex="-1"
+        aria-labelledby="modalConfirmacionRegistroLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalConfirmacionRegistroLabel">Confirmación</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              El producto ha sido actualizado.
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                id="btnGuardarCambios">Aceptar</button>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <br />
-        <p align="right">
-            <input type="button" value="Confirmar" id="confirmar" class="btn btn-dark" />
-        </p>
-    </div>
+      <!-- <br />
+    <p align="right">
+      <input type="button" value="Confirmar" id="botonConfirmar" class="btn btn-dark" />
+    </p> -->
 
+    </form>
+    <!-- Tabla resultado busqueda -->
+    <table class="table">
+      <thead class="table table-dark">
+        <tr>
+          <th scope="col">Id Producto</th>
+          <th scope="col">Descripci&oacute;n</th>
+          <th scope="col">Valor Unit.</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Editar</th>
+        </tr>
+      </thead>
+      <tbody id="bodyTabla"></tbody>
+    </table>
+  </div>
 
+  <footer>
+    <br />
+    <center>
+      <h5>Venta Gasolina</h5>
+    </center>
+    <center><label for="">© 2021 Copyright: Courageous Code</label></center>
+  </footer>
+  <!-- JS de bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    </div>
+  <!-- <script src="/js/listar_productos.js"></script> -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
 
-    <footer>
-        <br />
-        <center>
-            <h5>Venta Gasolina</h5>
-        </center>
-        <center><label for="">© 2021 Copyright: Courageous Code</label></center>
-    </footer>
-    <!-- JS de bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+ https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
 
-    <script src="/js/listar_productos.js"></script>
+  <script src="/js/firebaseConfig.js"></script>
+  <script type="module" src="/js/listarProductosDB.js"></script>
 </body>
 
 </html>
