@@ -60,26 +60,43 @@
       </header>
     <div class="container mt-5">
         <h1 class="mb-5">Registro de Venta</h1>
+
+        <div id="productoventa">
+        
+        </div>
+
         <form class="row g-1">
-            <div class="col-md-3">
+
+            <div class="col-md-3" id="valtotal">
                 <label for="inputValorTotal" class="form-label">Valor Total</label>
-                <input type="number" class="form-control" min="0" id="inputValorTotal" required>
+                <input type="number"  class="form-control" min="0" id="inputValorTotal" readonly="readonly" required>
+                <br>
             </div>
             <div class="col-md-4">
                 <label for="inputIdProducto" class="form-label">ID Producto</label>
-                <input type="number" class="form-control" min="0" id="inputIdProducto" required>
+                <select name="idproducto" id="inputIdProducto" class="form-control">
+                </select>              
+                <!-- <input type="text" class="form-control" min="0" id="inputIdProducto" required> -->
             </div>
+            
+            <div class="col-md-4" id="preciounitario">
+                <label for="inputPrecioUnitario" class="form-label">Precio Unitario/Producto</label>
+                <input type="number" class="form-control" min="0" id="inputPrecioUnitario" readonly="readonly" required>
+            </div>
+            
+            <div class="col-md-2">
+                <label for="inputCantidad" class="form-label">Cantidad</label>
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    min="0" 
+                    id="inputCantidad"    
+                    required>
+            </div>
+            
             <div class="col-md-4">
                 <label for="inputFechaVenta" class="form-label">Fecha Venta</label>
                 <input type="date" class="form-control" min="2000-01-02" id="inputFechaVenta" required>
-            </div>
-            <div class="col-md-2">
-                <label for="inputCantidad" class="form-label">Cantidad</label>
-                <input type="number" class="form-control" min="0" id="inputCantidad" required>
-            </div>
-            <div class="col-md-4">
-                <label for="inputPrecioUnitario" class="form-label">Precio Unitario/Producto</label>
-                <input type="number" class="form-control" min="0" id="inputPrecioUnitario" required>
             </div>
             <div class="col-md-5">
                 <label for="inputEstadoVenta" class="form-label">Estado Venta</label>
@@ -105,10 +122,13 @@
 
              <!-- Button trigger modal -->
              <div class="col-12 mt-5 d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                <!-- <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#modalConfirmacionRegistro">
                     Registrar Venta
-                </button>
+                </button> -->
+                <input type="button" value = "Registrar Venta" id="btnregistrarventa" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalConfirmacionRegistro">
+                </input>
             </div>
 
             <!-- Modal -->
@@ -145,7 +165,7 @@
         crossorigin="anonymous"></script>
     <!-- MDB -->
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script> -->
-    <script>
+    <!-- <script>
         /* Setear Fecha Maxima el día de Hoy */
         var today = new Date();
         var dd = today.getDate();
@@ -162,11 +182,17 @@
 
         today = yyyy + '-' + mm + '-' + dd;
         document.getElementById("inputFechaVenta").setAttribute("max", today);
-    </script>
+    </script> -->
     <!-- Await + Modal + Efecto Spinner  -->
-    <script>
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
 
-    </script>
+   <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+   <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+
+   <script src="/js/firebaseConfig.js"></script>
+   <script type="module" src="/js/registroVentas.js"></script>
 </body>
 
 </html>
