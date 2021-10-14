@@ -10,59 +10,79 @@ let strRolConfirm = document.getElementById("edicionRol")
 let btnConfirmar = document.getElementById("confirmar")
 const NODATA = "No se encuentran datos"
 
+// Sprint 4 HU_008 - Inicio Listar ventas
 /*
 Usuarios
 */
-let regVenta1 = {
-    id:100000001,
-    estado:`Entregado`,
-    valorTo:`$180000`,
-    idprod:5248,
-    cantProd:10,
-    precioUni:'$18000',
-    fechaVenta:`02/10/2021`,
-    docIdCliente: 10325612,
-    idVendedor: 1346
+// let regVenta1 = {
+//     id:100000001,
+//     estado:`Entregado`,
+//     valorTo:`$180000`,
+//     idprod:5248,
+//     cantProd:10,
+//     precioUni:'$18000',
+//     fechaVenta:`02/10/2021`,
+//     docIdCliente: 10325612,
+//     idVendedor: 1346
+// }
+
+// let regVenta2 = {
+//     id:100000002,
+//     estado:`Cancelado`,
+//     valorTo:`$80000`,
+//     idprod:5249,
+//     cantProd:10,
+//     precioUni:'$8000',
+//     fechaVenta:`03/10/2021`,
+//     docIdCliente: 10336612,
+//     idVendedor: 1346
+// }
+
+// let regVenta3 = {
+//     id:100000003,
+//     estado:`Procesando`,
+//     valorTo:`$181000`,
+//     idprod:5250,
+//     cantProd:10,
+//     precioUni:'$18100',
+//     fechaVenta:`04/10/2021`,
+//     docIdCliente: 10125612,
+//     idVendedor: 1346
+// }
+
+// let regVenta4 = {
+//     id:100000004,
+//     estado:`Entregado`,
+//     valorTo:`$180300`,
+//     idprod:5251,
+//     cantProd:10,
+//     precioUni:'$18030',
+//     fechaVenta:`05/10/2021`,
+//     docIdCliente: 3526816,
+//     idVendedor: 1346
+// }
+
+
+// let usuarios = [regVenta1,regVenta2,regVenta3,regVenta4]
+
+const db = firebase.firestore();
+let ventas = [];
+
+// Carga los datos de Firestore
+async function loadItems() {
+    ventas = [];
+    try {
+        const response = await db.collection('ventas').get()
+        response.forEach(function (item) {
+            console.log(item.data());
+            ventas.push(item.data())
+        })
+        return ventas
+    } catch (error) {
+        console.log(error);
+    }
 }
-
-let regVenta2 = {
-    id:100000002,
-    estado:`Cancelado`,
-    valorTo:`$80000`,
-    idprod:5249,
-    cantProd:10,
-    precioUni:'$8000',
-    fechaVenta:`03/10/2021`,
-    docIdCliente: 10336612,
-    idVendedor: 1346
-}
-
-let regVenta3 = {
-    id:100000003,
-    estado:`Procesando`,
-    valorTo:`$181000`,
-    idprod:5250,
-    cantProd:10,
-    precioUni:'$18100',
-    fechaVenta:`04/10/2021`,
-    docIdCliente: 10125612,
-    idVendedor: 1346
-}
-
-let regVenta4 = {
-    id:100000004,
-    estado:`Entregado`,
-    valorTo:`$180300`,
-    idprod:5251,
-    cantProd:10,
-    precioUni:'$18030',
-    fechaVenta:`05/10/2021`,
-    docIdCliente: 3526816,
-    idVendedor: 1346
-}
-
-
-let usuarios = [regVenta1,regVenta2,regVenta3,regVenta4]
+// Sprint 4 HU_008 - Fin Listar ventas
 
 /*
 Botones
@@ -73,17 +93,33 @@ btnlimpiar.addEventListener("click", clearSearch)
 
 /*
 Funciones que pintan en pantalla
-*/ 
-function fmostrar() {
+*/
+// function fmostrar() { //Sprint 4 HU_008 - Listar ventas
+async function fmostrar() {  //Sprint 4 HU_008 - Listar ventas
 
     let contenido = ``;
-    let a = 1
-    usuarios.forEach(element => {
-        contenido += `<tr> <th scope="row">${element.id}</th> <th>${element.estado}</th> <th>${element.valorTo}</th> <th>${element.idprod}</th> <th>${element.cantProd}</th> <th>${element.precioUni}</th> <th>${element.fechaVenta}</th><th>${element.docIdCliente}</th><th>${element.idVendedor}</th><th><input type="button" value="Editar" id="teditar${a}" class="btn btn-dark" /></th></tr>`
+    // Sprint 4 HU_008 - Inicio Listar ventas
+    // let a = 1
+    // usuarios.forEach(element => {
+    //     contenido += `<tr> <th scope="row">${element.id}</th> <th>${element.estado}</th> <th>${element.valorTo}</th> <th>${element.idprod}</th> <th>${element.cantProd}</th> <th>${element.precioUni}</th> <th>${element.fechaVenta}</th><th>${element.docIdCliente}</th><th>${element.idVendedor}</th><th><input type="button" value="Editar" id="teditar${a}" class="btn btn-dark" /></th></tr>`
+    //     $('#bodyTabla').html(contenido)
+    //     a += 1
+    // });
+    ventas = await loadItems()
+    ventas.forEach(element => {
+        contenido += `<tr> <th scope="row">${element.id}</th> <th>${element.estadoventa}</th>
+        <th>${element.valortotal}</th>
+        <th>${element.idproducto}</th>
+        <th>${element.cantidad}</th>
+        <th>${element.preciounitarioproducto}</th>
+        <th>${element.fechaventa}</th>
+        <th>${element.docidcliente}</th>
+        <th>${element.idvendedorasignado}</th>
+        <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th>
+        </tr>`
         $('#bodyTabla').html(contenido)
-        a += 1
-    });
-
+    })
+    // Sprint 4 HU_008 - Fin Listar ventas
 }
 
 function fmostrarFiltradoid(filtered) {
@@ -123,7 +159,7 @@ function getSearch() {
 
 
 
-    if (id == '' && idCliente == '' && idVendedor == '' ) {
+    if (id == '' && idCliente == '' && idVendedor == '') {
         fmostrar()
     } else if (id > 0 && id <= usuarios.length) {
 
@@ -133,57 +169,57 @@ function getSearch() {
 
         fmostrarFiltradoid(filtered)
 
-    //else if (idCliente != '') {
+        //else if (idCliente != '') {
 
-    //     const filtered = usuarios.filter(function (element) {
-    //         return element.nombre.toUpperCase() == idCliente.toUpperCase();
-    //     });
+        //     const filtered = usuarios.filter(function (element) {
+        //         return element.nombre.toUpperCase() == idCliente.toUpperCase();
+        //     });
 
-    //     if (filtered == '') {
-    //         alert(NODATA)
-    //     } else {
-    //         fmostrarFiltradoid(filtered)
-    //     }
+        //     if (filtered == '') {
+        //         alert(NODATA)
+        //     } else {
+        //         fmostrarFiltradoid(filtered)
+        //     }
 
-    // } else if (correo != '') {
+        // } else if (correo != '') {
 
-    //     const filtered = usuarios.filter(function (element) {
-    //         return element.correo == correo;
-    //     });
+        //     const filtered = usuarios.filter(function (element) {
+        //         return element.correo == correo;
+        //     });
 
-    //     if (filtered == '') {
-    //         alert(NODATA)
-    //     } else {
-    //         fmostrarFiltradoid(filtered)
-    //     }
+        //     if (filtered == '') {
+        //         alert(NODATA)
+        //     } else {
+        //         fmostrarFiltradoid(filtered)
+        //     }
 
-    // } else if (rol != '') {
+        // } else if (rol != '') {
 
-    //     const filtered = usuarios.filter(function (element) {
-    //         return element.rol.toUpperCase() == rol.toUpperCase();
-    //     });
+        //     const filtered = usuarios.filter(function (element) {
+        //         return element.rol.toUpperCase() == rol.toUpperCase();
+        //     });
 
-    //     if (filtered == '') {
-    //         alert(NODATA)
-    //     } else {
-    //         fmostrarFiltrado(filtered)
-    //     }
+        //     if (filtered == '') {
+        //         alert(NODATA)
+        //     } else {
+        //         fmostrarFiltrado(filtered)
+        //     }
 
-    // } else if (estado != '') {
+        // } else if (estado != '') {
 
-    //     if (estado === "noautorizado") {
-    //         estado = "No Autorizado"
-    //     }
+        //     if (estado === "noautorizado") {
+        //         estado = "No Autorizado"
+        //     }
 
-    //     const filtered = usuarios.filter(function (element) {
-    //         return element.estado.toUpperCase() == estado.toUpperCase();
-    //     });
+        //     const filtered = usuarios.filter(function (element) {
+        //         return element.estado.toUpperCase() == estado.toUpperCase();
+        //     });
 
-    //     if (filtered == '') {
-    //         alert(NODATA)
-    //     } else {
-    //         fmostrarFiltrado(filtered)
-    //     }
+        //     if (filtered == '') {
+        //         alert(NODATA)
+        //     } else {
+        //         fmostrarFiltrado(filtered)
+        //     }
 
     } else {
         alert(NODATA)
@@ -195,7 +231,7 @@ function getSearch() {
 Función que permite limpiar la pantalla
 */
 function clearSearch() {
-    
+
     let usuarioFilter = document.getElementById("bodyTabla")
     let lblUsuariEdit = document.getElementById("usuarioeditar")
     let pintarLabel = `<h3 align="center"></h3>`
@@ -204,7 +240,7 @@ function clearSearch() {
     numId.value = ''
     strIdCliente.value = ''
     numIdVendedor.value = ''
-    
+
 
     //Limpia la tabla
     usuarioFilter.innerHTML = ''
@@ -218,7 +254,7 @@ function clearSearch() {
 Función que permite Editar
 */
 function feditar(varEntrada) {
-    
+
     let lblUsuariEdit = document.getElementById("usuarioeditar")
     let ajustaArr = varEntrada - 1
     let usuarioEdit = usuarios[ajustaArr]
