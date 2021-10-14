@@ -114,6 +114,7 @@ async function fmostrar() {  //Sprint 4 HU_008 - Listar ventas
         <th>${element.preciounitarioproducto}</th>
         <th>${element.fechaventa}</th>
         <th>${element.docidcliente}</th>
+        <th>${element.nombrecliente}</th>
         <th>${element.idvendedorasignado}</th>
         <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th>
         </tr>`
