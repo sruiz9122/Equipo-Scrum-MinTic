@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Listar Usuarios</title>
+  <title>Listar Ventas</title>
   <!-- CSS Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
@@ -74,8 +74,12 @@
     <!-- Resultado de Edición -->
     <form id="formularioEdicion" class="row g-1">
       <div>Ingrese la información a editar:</div>
+      <div >
+        <label for="inputIdVenta" class="form-label">ID Venta:</label>
+        <input name="idVenta" id="inputIdVenta" class="form-control" readonly="readonly" required>
+      </div>
       <div class="col-12 col-md-4">
-        <label for="inputIdProducto" class="form-label">ID Producto</label>
+        <label for="inputIdProducto" class="form-label">ID Producto:</label>
         <select name="idproducto" id="inputIdProducto" class="form-control" required>
         </select>
       </div>
@@ -89,7 +93,7 @@
         <label for="inputPrecioUnitario" class="form-label">Precio Unitario/Producto</label>
         <input type="number" class="form-control" min="0" id="inputPrecioUnitario" readonly="readonly" required>
       </div>
-      <div id="idVenta"></div>
+
       <div class="col-3 col-md-2">
         <label for="inputCantidad" class="form-label">Cantidad</label>
         <input type="number" class="form-control" min="0" id="inputCantidad" required>
@@ -103,7 +107,7 @@
         <select id="inputEstadoVenta" class="form-select" value="" required>
           <option disabled value="" selected>Elija un estado</option>
           <option value=" 1">En progreso</option>
-          <option value="2">Cancelado</option>
+          <option value="2">Cancelada</option>
           <option value="3">Entregada</option>
         </select>
       </div>
@@ -116,8 +120,8 @@
         <input type="text" class="form-control" id="inputNombreCliente" placeholder="" required>
       </div>
       <div class="col-8 col-md-4">
-        <label for="inputidvendedor" class="form-label">ID Vendedor Asignado</label>
-        <input type="number" class="form-control" min="0" id="inputidvendedor" placeholder="" required>
+        <label for="inputIdVendedor" class="form-label">ID Vendedor Asignado</label>
+        <input type="number" class="form-control" min="0" id="inputIdVendedor" placeholder="" required>
       </div>
 
       <div class="col-4 d-flex justify-content-end mt-2">
@@ -159,6 +163,7 @@
           <th scope="col">Precio unitario</th>
           <th scope="col">Fecha venta</th>
           <th scope="col">Doc. Identidad cliente</th>
+          <th scope="col">Nombre Cliente</th>
           <th scope="col">Id Vendedor</th>
           <th scope="col">Editar</th>
         </tr>
