@@ -1,6 +1,7 @@
 let numId = document.getElementById("id")
 let strIdCliente = document.getElementById("idcliente")
-let numIdVendedor = document.getElementById("idVendedor")
+// let numIdVendedor = document.getElementById("idVendedor") //Sprint 4 HU_009 - Listar ventas por Id de la venta, documento o nombre del cliente
+let nomCliente = document.getElementById("nomCliente")
 let strCorreo = document.getElementById("correo")
 let strRol = document.getElementById("rol")
 let btnbuscar = document.getElementById("buscar")
@@ -74,7 +75,7 @@ async function loadItems() {
     try {
         const response = await db.collection('ventas').get()
         response.forEach(function (item) {
-            console.log(item.data());
+            //console.log(item.data()); //Sprint 4 HU_009 - Listar ventas por Id de la venta, documento o nombre del cliente
             ventas.push(item.data())
         })
         return ventas
@@ -123,28 +124,106 @@ async function fmostrar() {  //Sprint 4 HU_008 - Listar ventas
     // Sprint 4 HU_008 - Fin Listar ventas
 }
 
-function fmostrarFiltradoid(filtered) {
+// Sprint 4 HU_009 - Inicio Listar ventas por Id de la venta, documento o nombre del cliente
+// function fmostrarFiltradoid(filtered) {
 
+//     let pintarTabla = ``;
+
+//     filtered.forEach(usuario => {
+//         pintarTabla += `<tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
+//         feditar(usuario.id)
+//         $('#bodyTabla').html(pintarTabla)
+//     });
+
+// }
+
+// function fmostrarFiltrado(filtered) {
+
+//     let pintarTabla = ``;
+
+//     filtered.forEach(usuario => {
+//         pintarTabla += `<tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
+//         $('#bodyTabla').html(pintarTabla)
+//     });
+
+// }
+// Filtrado por Id de la venta
+async function fmostrarFilIdVenta(id) {
     let pintarTabla = ``;
-
-    filtered.forEach(usuario => {
-        pintarTabla += `<tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
-        feditar(usuario.id)
-        $('#bodyTabla').html(pintarTabla)
-    });
-
+    console.clear();
+    console.log('Id venta consultado: ' + id);
+    ventas = await loadItems()
+    ventas.forEach(element => {
+        if (id == `${element.id}`) {
+            pintarTabla += `<tr> <th scope="row">${element.id}</th> 
+            <th>${element.estadoventa}</th>
+            <th>${element.valortotal}</th>
+            <th>${element.idproducto}</th>
+            <th>${element.cantidad}</th>
+            <th>${element.preciounitarioproducto}</th>
+            <th>${element.fechaventa}</th>
+            <th>${element.docidcliente}</th>
+            <th>${element.nombrecliente}</th>
+            <th>${element.idvendedorasignado}</th>
+            <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th>
+            </tr>`
+            $('#bodyTabla').html(pintarTabla)
+        }
+    })
 }
-
-function fmostrarFiltrado(filtered) {
-
+// Filtrado por Id del cliente
+async function fmostrarFilidCliente(id) {
     let pintarTabla = ``;
-
-    filtered.forEach(usuario => {
-        pintarTabla += `<tr> <th scope="row">${usuario.id}</th> <th>${usuario.nombre}</th> <th>${usuario.correo}</th> <th>${usuario.rol}</th> <th>${usuario.estado}</th> <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th></tr>`
-        $('#bodyTabla').html(pintarTabla)
-    });
-
+    console.clear();
+    console.log('Id cliente consultado: ' + id);
+    ventas = await loadItems()
+    ventas.forEach(element => {
+        if (id == `${element.docidcliente}`) {
+            pintarTabla += `<tr> <th scope="row">${element.id}</th> 
+            <th>${element.estadoventa}</th>
+            <th>${element.valortotal}</th>
+            <th>${element.idproducto}</th>
+            <th>${element.cantidad}</th>
+            <th>${element.preciounitarioproducto}</th>
+            <th>${element.fechaventa}</th>
+            <th>${element.docidcliente}</th>
+            <th>${element.nombrecliente}</th>
+            <th>${element.idvendedorasignado}</th>
+            <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th>
+            </tr>`
+            $('#bodyTabla').html(pintarTabla)
+        }
+    })
 }
+// Filtrado por nombre del cliente
+async function fmostrarFilnomCliente(nombre) {
+    let pintarTabla = ``;
+    let nomb = '';
+    console.clear();
+    nombre = nombre.toLowerCase();
+    console.log('Nombre cliente consultado: ' + nombre);
+    ventas = await loadItems()
+    ventas.forEach(element => {
+        nomb = `${element.nombrecliente}`
+        nomb = nomb.toLowerCase();
+        if (nomb.includes(nombre)) {
+            pintarTabla += `<tr> <th scope="row">${element.id}</th> 
+            <th>${element.estadoventa}</th>
+            <th>${element.valortotal}</th>
+            <th>${element.idproducto}</th>
+            <th>${element.cantidad}</th>
+            <th>${element.preciounitarioproducto}</th>
+            <th>${element.fechaventa}</th>
+            <th>${element.docidcliente}</th>
+            <th>${element.nombrecliente}</th>
+            <th>${element.idvendedorasignado}</th>
+            <th><input type="button" value="Editar" id="teditar" class="btn btn-dark" /></th>
+            </tr>`
+            $('#bodyTabla').html(pintarTabla)
+        }
+    })
+}
+// Sprint 4 HU_009 - Fin Listar ventas por Id de la venta, documento o nombre del cliente
 
 /*
 Funcion de búsqueda
@@ -152,24 +231,56 @@ Funcion de búsqueda
 function getSearch() {
 
     console.clear()
+    // Sprint 4 HU_009 - Inicio Listar ventas por Id de la venta, documento o nombre del cliente
+    // let id = numId.value
+    // let idCliente = strIdCliente.value
+    // let idVendedor = numIdVendedor.value
 
-    let id = numId.value
+
+
+
+    // if (id == '' && idCliente == '' && idVendedor == '') {
+    //     fmostrar()
+    // } else if (id > 0 && id <= usuarios.length) {
+
+    //     const filtered = usuarios.filter(function (element) {
+    //         return element.id == id;
+    //     });
+
+    //     fmostrarFiltradoid(filtered)
+    let idVenta = numId.value
     let idCliente = strIdCliente.value
-    let idVendedor = numIdVendedor.value
+    let nombreCliente = nomCliente.value
 
-
-
-
-    if (id == '' && idCliente == '' && idVendedor == '') {
+    // Listar ventas
+    if (idVenta == '' && idCliente == '' && nombreCliente == '') {
         fmostrar()
-    } else if (id > 0 && id <= usuarios.length) {
-
-        const filtered = usuarios.filter(function (element) {
-            return element.id == id;
-        });
-
-        fmostrarFiltradoid(filtered)
-
+    }
+    // Buscar por Id de venta
+    else if (idVenta != '' && idCliente == '' && nombreCliente == '') {
+        fmostrarFilIdVenta(idVenta)
+    }
+    // Buscar por Id de cliente
+    else if (idVenta == '' && idCliente != '' && nombreCliente == '') {
+        fmostrarFilidCliente(idCliente)
+    }
+    // Buscar por nombre de cliente
+    else if (idVenta == '' && idCliente == '' && nomCliente != '') {
+        fmostrarFilnomCliente(nombreCliente)
+    }
+    // Buscar cuando hay mas de un campo con información (Busca por Id de venta)
+    else if (idVenta != '' && idCliente != '' && nomCliente != '') {
+        fmostrarFilIdVenta(idVenta)
+    }
+    else if(idVenta != '' && idCliente != '' && nomCliente == ''){
+        fmostrarFilIdVenta(idVenta)
+    }
+    else if(idVenta != '' && idCliente == '' && nomCliente != ''){
+        fmostrarFilIdVenta(idVenta)
+    }
+    else if(idVenta == '' && idCliente != '' && nomCliente != ''){
+        fmostrarFilidCliente(idCliente)
+        // Sprint 4 HU_009 - Fin Listar ventas por Id de la venta, documento o nombre del cliente
         //else if (idCliente != '') {
 
         //     const filtered = usuarios.filter(function (element) {
@@ -240,14 +351,15 @@ function clearSearch() {
     //Limpia filtros de consulta
     numId.value = ''
     strIdCliente.value = ''
-    numIdVendedor.value = ''
+    // numIdVendedor.value = '' // Sprint 4 HU_009 - Listar ventas por Id de la venta, documento o nombre del cliente
+    nomCliente.value = '' // Sprint 4 HU_009 - Listar ventas por Id de la venta, documento o nombre del cliente
 
 
     //Limpia la tabla
     usuarioFilter.innerHTML = ''
 
     //Limpiar campos de edición
-    lblUsuariEdit.innerHTML = pintarLabel
+    // lblUsuariEdit.innerHTML = pintarLabel // Sprint 4 HU_009 - Listar ventas por Id de la venta, documento o nombre del cliente
 
 }
 
