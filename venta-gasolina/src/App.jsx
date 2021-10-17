@@ -1,7 +1,8 @@
 // import './App.css';
 import Header from './components/Header';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Ventas from 'views/Ventas';
+import { Ventas } from "views/Ventas";
+import { Venta } from "components/Venta";
 import { Productos } from 'views/Productos';
 import { Producto } from 'components/Producto';
 import Usuarios from 'views/Usuarios';
@@ -16,6 +17,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path='/ventas' component={Ventas} />
+          <Route exact path='/ventas/:id' component={Venta} />
           <Route exact path='/productos' component={Productos} />
           <Route exact path='/productos/:id' component={Producto} />
           <Route exact path='/usuarios' component={Usuarios} />
