@@ -5,6 +5,7 @@ import Ventas from 'views/Ventas';
 import Productos from 'views/Productos';
 import Usuarios from 'views/Usuarios';
 import Login from 'views/Login';
+import { UsuarioFiltrado } from './views/UsuarioFiltrado';
 
 
 
@@ -16,13 +17,14 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route exact path='/ventas'>
+          <Route exact path='/Ventas'>
             <Ventas />
           </Route>
-          <Route exact path='/productos'>
+          <Route exact path='/Productos'>
             <Productos />
           </Route>
-          <Route exact path='/usuarios'>
+          <Route exact path="/Usuarios/:id" component={UsuarioFiltrado} />
+          <Route exact path='/Usuarios'>
             <Usuarios />
           </Route>
 
