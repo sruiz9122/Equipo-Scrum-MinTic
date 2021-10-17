@@ -14,14 +14,16 @@ function App() {
     <>
 
 
+    {/*  */}
+
+
       <Router>
         <Header />
         <Switch>
-          <Route exact path='/ventas'>
-            <Ventas />
+          <Route exact path='/ventas' component={Ventas}>
+  
           </Route>
-          <Route exact path='/productos'>
-            <Productos />
+          <Route exact path='/productos' component={Productos}>
           </Route>
           <Route exact path='/productos/:id'>
             <Producto />
@@ -34,9 +36,11 @@ function App() {
       </Router>
 
       <Router>
+        <Switch>
         <Route exact path='/'>
           <Login />
         </Route>
+        </Switch>
       </Router>
     </>
   );
