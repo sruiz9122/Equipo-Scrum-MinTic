@@ -15,17 +15,14 @@ const Header = () => {
             <div className="collapse navbar-collapse text-nowrap text-center" id="navbarNavDropdown">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <NavLink classNameprop="nav-link active d-flex " activeClassName='active' aria-current="page" to='/ventas' style={{ textDecoration: 'none' }}>Maestro Ventas</NavLink>
+                  <NavLink className="nav_link" aria-current="page" to='/ventas' >Maestro Ventas</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink classNameprop="nav-link active d-flex" activeClassName='active' to='/productos' style={{ textDecoration: 'none' }}>Maestro Productos</NavLink>
+                  <NavLink className="nav_link" to='/productos' >Maestro Productos</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink classNameprop="nav-link active d-flex" activeClassName='active' to='/usuarios'style={{ textDecoration: 'none' }}>Maestro usuarios</NavLink>
-                </li>
-                
-                
-                
+                  <NavLink className="nav_link" to='/usuarios'>Maestro usuarios</NavLink>
+                </li> 
               </ul>
               <div className="navbar-nav nav-item container d-flex flex-wrap justify-content-end  ">
                 <Link href="#" className="d-none d-sm-block link-dark text-decoration-none perfil-img-interna"  >
@@ -35,14 +32,9 @@ const Header = () => {
                   <button type="button" className="btn btn-primary">Cerrar Sesión</button>
                 </div>
               </div>
-    
-                
-              
-            </div>
-            
+            </div>            
           </div>
-        </nav>
-    
+        </nav>    
       </header>
     )
 }
