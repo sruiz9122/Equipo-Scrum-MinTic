@@ -1,0 +1,27 @@
+
+li{
+    padding: 0.8rem;
+    margin: 0px;
+    text-decoration: none;
+}
+a{
+    color: black;
+    
+}
+
+a:hover{
+    color: #0d6efd;
+}
+
+.active{
+    background-color: #0d6efd;
+    color: white;
+    font-weight:bold ;
+    text-decoration: none;
+    /* margin:10px; */
+    padding: 0.5rem;
+    border-radius:.5rem;
+
+}
+
+

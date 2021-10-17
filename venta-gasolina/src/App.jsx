@@ -13,26 +13,29 @@ function App() {
     <>
 
 
+    {/*  */}
+
+
       <Router>
-        <Header />
+        <Header >
         <Switch>
-          <Route exact path='/ventas'>
-            <Ventas />
+          <Route exact path='/ventas' component={Ventas}>
+  
           </Route>
-          <Route exact path='/productos'>
-            <Productos />
+          <Route exact path='/productos' component={Productos}>
           </Route>
-          <Route exact path='/usuarios'>
-            <Usuarios />
+          <Route exact path='/usuarios'component={Usuarios}>
           </Route>
 
         </Switch>
+        </Header>
       </Router>
 
       <Router>
-        <Route exact path='/'>
-          <Login />
+        <Switch>
+        <Route  path='/' component={Login}>
         </Route>
+        </Switch>
       </Router>
     </>
   );
