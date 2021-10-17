@@ -39,7 +39,7 @@ export const guardarDatabase = async (nombreDatabase, data) => {
 export const consultarDatabase = async (nombreDatabase) => {
   try {
     const response = await getDocs(query(collection(database, nombreDatabase)));
-    console.log("response.docs: ", response.docs);
+    //console.log("response.docs: ", response.docs);//Testing
     const elementos = response.docs.map((doc) => {
       const document = {
         id: doc.id,
@@ -47,7 +47,7 @@ export const consultarDatabase = async (nombreDatabase) => {
       };
       return document;
     });
-    console.log(elementos);
+    //console.log(elementos);//Testing
     return elementos;
   } catch (error) {
     throw new Error(error.message);
