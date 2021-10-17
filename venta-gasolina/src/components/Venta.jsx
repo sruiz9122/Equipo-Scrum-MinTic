@@ -53,14 +53,14 @@ export const Venta = () => {
     const ventaTemp = await buscarDocumentoFiltrado('ventas', idVenta);
     console.log('Venta:', ventaTemp);
     setvalorTotal(ventaTemp.valorTotal);
-    setProducto(ventaTemp.idproducto);
-    setFecha(ventaTemp.fechaventa);
+    setProducto(ventaTemp.idProducto);
+    setFecha(ventaTemp.Fecha);
     setcantidad(ventaTemp.cantidad);
-    setprecioUnitario(ventaTemp.preciounitarioproducto);
-    setestadoVenta(ventaTemp.estadoventa);
-    setidCliente(ventaTemp.docidcliente);
-    setnombreCliente(ventaTemp.nombrecliente);
-    setidVendedor(ventaTemp.idvendedorasignado);
+    setprecioUnitario(ventaTemp.precioUnitario);
+    setestadoVenta(ventaTemp.estadoVenta);
+    setidCliente(ventaTemp.idCliente);
+    setnombreCliente(ventaTemp.nombreCliente);
+    setidVendedor(ventaTemp.idVendedor);
     setLoading(false);
   };
 
