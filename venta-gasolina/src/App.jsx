@@ -2,7 +2,8 @@
 import Header from './components/Header';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Ventas from 'views/Ventas';
-import Productos from 'views/Productos';
+import {Productos} from 'views/Productos';
+import {Producto} from 'components/Producto';
 import Usuarios from 'views/Usuarios';
 import Login from 'views/Login';
 
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path='/productos'>
             <Productos />
+          </Route>
+          <Route exact path='/productos/:id'>
+            <Producto />
           </Route>
           <Route exact path='/usuarios'>
             <Usuarios />
