@@ -1,0 +1,25 @@
+li {
+  padding: 0.8rem;
+  margin: 0px;
+}
+
+a.nav_link {
+  text-decoration: none;
+}
+
+a.nav_link:hover {
+  color: #0a3c86;
+  font-weight: 400;
+}
+
+a.nav_link.active {
+  background-color: #0d6efd;
+  color: white;
+  font-weight: 500;
+  padding: 0.35rem;
+  border-radius: 0.2rem;
+}
+a.nav_link.active:hover {
+  color: white;
+  font-weight: 500;
+}
