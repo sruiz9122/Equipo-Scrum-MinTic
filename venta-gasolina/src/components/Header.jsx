@@ -1,45 +1,40 @@
 import React from 'react'
 import logo from "./../media/LOGO_TRANS_2.svg"
+import {Link,NavLink} from 'react-router-dom';
+import 'styles/Navbar.css'
+
 const Header = () => {
     return (
         <header>
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
           <div className="container">
-            <a className="navbar-brand" href="#"><img src={logo} alt="LogoCourageous" height="50px"/></a>
+            <Link  classNameprop="navbar-brand" exact to='/'><img src={logo} alt="LogoCourageous" height="50px"/></Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse text-nowrap text-center" id="navbarNavDropdown">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link active d-flex " aria-current="page" href="./maestroVentas.html">Maestro Ventas</a>
+                  <NavLink className="nav_link" aria-current="page" to='/ventas' >Maestro Ventas</NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link active d-flex" href="./maestroProductos.html">Maestro Productos</a>
+                  <NavLink className="nav_link" to='/productos' >Maestro Productos</NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link active d-flex" href="./maestroUsuarios.html">Maestro usuarios</a>
-                </li>
-                
-                
-                
+                  <NavLink className="nav_link" to='/usuarios'>Maestro usuarios</NavLink>
+                </li> 
               </ul>
               <div className="navbar-nav nav-item container d-flex flex-wrap justify-content-end  ">
-                <a href="#" className="d-none d-sm-block link-dark text-decoration-none perfil-img-interna"  >
+                <Link href="#" className="d-none d-sm-block link-dark text-decoration-none perfil-img-interna"  >
                   <img  src="https://github.com/mdo.png" alt="mdo" width="40" height="40" className="rounded-circle imagen-logo "  />
-                </a>
+                </Link>
                 <div className="navbar-nav text-end">
                   <button type="button" className="btn btn-primary">Cerrar Sesión</button>
                 </div>
               </div>
-    
-                
-              
-            </div>
-            
+            </div>            
           </div>
-        </nav>
-    
+        </nav>    
       </header>
     )
 }
