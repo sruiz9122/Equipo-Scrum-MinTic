@@ -7,6 +7,7 @@ import { Productos } from 'views/Productos';
 import { Producto } from 'components/Producto';
 import Usuarios from 'views/Usuarios';
 import Login from 'views/Login';
+import { UsuarioFiltrado } from './views/UsuarioFiltrado';
 
 function App() {
   return (
@@ -20,10 +21,9 @@ function App() {
           <Route exact path='/ventas/:id' component={Venta} />
           <Route exact path='/productos' component={Productos} />
           <Route exact path='/productos/:id' component={Producto} />
-          <Route exact path='/usuarios' component={Usuarios} />
-          <Route exact path='/'>
-            <Login />
-          </Route>
+          <Route exact path="/Usuarios/:id" component={UsuarioFiltrado} />
+          <Route exact path='/Usuarios' component={Usuarios}/>
+          <Route exact path='/' component={Login}/>
         </Switch>
       </Router>
     </>
