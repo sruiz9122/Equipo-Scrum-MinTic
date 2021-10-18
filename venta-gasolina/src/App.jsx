@@ -35,7 +35,7 @@ function App() {
       <>
 <Router>
      <Switch>
-          <Route path="/" component={Ventas} />
+          <Route path="/" component={Home} />
          </Switch>
        </Router>
 {/* 

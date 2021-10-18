@@ -4,7 +4,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 // import { firebase } from 'components/firebaseConfig';
 import firebase from '../components/firebase';
 import usuarioLogin from 'media/user.png';
-import googleImagen from 'media/google.png'
+// import googleImagen from 'media/google.png'
 import 'styles/Login.css'
 
 const Login = () => {

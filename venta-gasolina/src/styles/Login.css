@@ -65,13 +65,13 @@ body{
     padding: 5px 0;
 }
 
-.forgot a{
+.forgot {
     color: white;
 }
 
 
 .dos {
     border: black;
-    background-color: white);
+    background-color: white;
     width: 50%;
 }
