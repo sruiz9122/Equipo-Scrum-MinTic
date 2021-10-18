@@ -39,7 +39,7 @@ const Login = () => {
 
   return (
 
-    <>
+    <div className= "fondo">
         {/* <button onClick={LoginConFirebase} type="submit" className="btn btn-danger">Iniciar sesión con Google</button> */}
 
       {/* <div className="modal-dialog text-center"> */}
@@ -76,7 +76,7 @@ const Login = () => {
 
 
 
-    </>
+    </div>
   )
 }
 export default Login
