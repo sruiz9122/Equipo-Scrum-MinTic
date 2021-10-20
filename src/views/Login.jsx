@@ -29,7 +29,7 @@ const Login = () => {
 
       })
       .then(() => {
-        history.push('/ventas');
+        history.push('/ventas');  //Redirige a /ventas cuando se inicie sesión
       })
       .catch((err) => {
         console.log(err);
