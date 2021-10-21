@@ -14,13 +14,15 @@ import {
 
 //DB Rirebase Courageous
 const firebaseConfig = {
-  apiKey: "AIzaSyAefc0z24es6ZxuyByHtHq1Ge3g1aZ1w5Y",
-  authDomain: "venta-gasolina.firebaseapp.com",
-  projectId: "venta-gasolina",
-  storageBucket: "venta-gasolina.appspot.com",
-  messagingSenderId: "409892502100",
-  appId: "1:409892502100:web:395dc3450c02975d4b4bc1"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
+
 initializeApp(firebaseConfig);
 const database = getFirestore();
 

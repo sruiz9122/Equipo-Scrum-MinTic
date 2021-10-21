@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {
-  actualizarDocumentoDatabase,
-  consultarDocumentoDatabase,
   buscarDocumentoFiltrado,
   guardarDatabase,
   actualizarDocumentoFiltrado,

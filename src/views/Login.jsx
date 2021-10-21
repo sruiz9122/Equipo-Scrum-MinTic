@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import firebase from '../components/firebase';
+// import firebase from '../components/firebase';
 import usuarioLogin from 'media/user.png';
 import 'styles/Login.css';
 import googleImagen from 'media/google.png';

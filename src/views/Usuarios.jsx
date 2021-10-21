@@ -1,4 +1,4 @@
-import { consultarDatabase } from 'components/firebaseConfig';
+import {    consultarDatabase  } from 'config/firebaseCourageous';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 

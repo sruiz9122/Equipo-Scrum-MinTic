@@ -1,5 +1,8 @@
-import { actualizarDocumentoFiltrado } from 'components/firebaseConfig';
-import { consultarDocumentoDatabase } from 'components/firebaseConfig';
+import {
+    consultarDocumentoDatabase,
+    actualizarDocumentoFiltrado,
+  } from 'config/firebaseCourageous';
+
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom'
