@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { consultarDatabase } from 'config/firebaseCourageous';
 import { Loading } from 'components/Loading';
 
+import PublicLayout from 'layout/PublicLayout';
+
+
 export const Productos = () => {
   const [listaProductos, setListaProductos] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -35,6 +38,8 @@ export const Productos = () => {
   }, [filtroId]);
 
   return (
+    <>
+    <PublicLayout>
     <div className='container px-5 pt-4'>
       {loading ? (
         <Loading />
@@ -116,5 +121,7 @@ export const Productos = () => {
         </>
       )}
     </div>
+    </PublicLayout>
+    </>
   );
 };

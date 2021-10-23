@@ -2,6 +2,9 @@ import {    consultarDatabase  } from 'config/firebaseCourageous';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
+import PublicLayout from 'layout/PublicLayout';
+
+
 const Usuarios = () => {
 
     const [listaUsuarios, setListaUsuarios] = useState([])
@@ -24,6 +27,7 @@ const Usuarios = () => {
         //     <a classNameName="btn btn-primary" href="./listar_usuarios.html" role="button">Actualizar (rol/estado) de usuario</a>
         // </div>
         <>
+            <PublicLayout>
             <div className="container">
 
                 <div>
@@ -106,6 +110,7 @@ const Usuarios = () => {
                     </tbody>
                 </table>
             </div>
+            </PublicLayout>
         </>
     )
 }

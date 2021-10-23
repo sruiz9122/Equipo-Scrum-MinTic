@@ -2,11 +2,13 @@ import { Venta } from "components/Venta";
 import { Productos } from 'views/Productos';
 import { Producto } from 'components/Producto';
 import { UsuarioFiltrado } from './views/UsuarioFiltrado';
-import Footer from 'components/Footer.jsx'
+// 1. Prueba para eliminar bug
+// import Footer from 'components/Footer.jsx'
+// import Header from './components/Header';
 
 
 // export default App;
-import Header from './components/Header';
+
 import './App.css'
 import React, { useState } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -38,16 +40,18 @@ function App() {
       <>
 <Router>
      
-          <Header />
+          {/* <Header /> */}
          <Switch>
+           
            <Route exact path='/ventas' component={Ventas} />
            <Route exact path='/ventas/:id' component={Venta} />
            <Route exact path='/productos' component={Productos} />
            <Route exact path='/productos/:id' component={Producto} />
            <Route exact path="/Usuarios/:id" component={UsuarioFiltrado} />
            <Route exact path='/Usuarios' component={Usuarios}/>
+           
          </Switch>
-         <Footer/>
+         {/* <Footer/> */}
        </Router>
 </>
 
