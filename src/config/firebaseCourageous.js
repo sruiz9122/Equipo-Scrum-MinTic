@@ -9,7 +9,8 @@ import {
   addDoc,
   deleteDoc,
   updateDoc,
-  where
+  where, 
+  setDoc
 } from "firebase/firestore";
 
 //DB Rirebase Courageous
@@ -93,6 +94,7 @@ export const buscarDocumentoFiltrado = async (nombreDatabase, id) => {
       //return document;
     });
     console.log("elementos.doc de response: ", elementos);
+    console.log('Vista del  Documento: ', document)
     return document;
   } catch (error) {
     throw new Error(error.message);
@@ -133,3 +135,15 @@ export const eliminarDocumentoDatabase = async (nombreDatabase, id) => {
     throw new Error(error.message);
   }
 };
+
+// crear documento
+export const crearDocumento = async( llaveId, correoLogin, nombreUser )=>{
+  const nuevoDocumento = await setDoc(doc(database, llaveId, 'datos' ), {
+  correo:correoLogin,
+  estado: 'autorizado',
+  id: llaveId,
+  nombre: nombreUser,
+  rol: 'Vendedor'
+  })
+  console.log( nuevoDocumento)
+}  ;
