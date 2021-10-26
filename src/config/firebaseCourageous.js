@@ -93,8 +93,8 @@ export const buscarDocumentoFiltrado = async (nombreDatabase, id) => {
       //console.log("documento filtrado:", document);
       //return document;
     });
-    console.log("elementos.doc de response: ", elementos);
-    console.log('Vista del  Documento: ', document)
+    // console.log("elementos.doc de response: ", elementos);
+    // console.log('Vista del  Documento: ', document)
     return document;
   } catch (error) {
     throw new Error(error.message);

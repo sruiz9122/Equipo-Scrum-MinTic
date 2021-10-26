@@ -86,10 +86,10 @@ const Login = () => {
           console.log("Usuario NO encontrado!")
           const datos ={
             correo: user.email,
-            estado:"Autorizado",
+            estado:"No Autorizado",
             id : user.uid,
             nombre:user.displayName,
-            rol: "Vendedor"
+            rol: "Pendiente"
           }
           guardarDatabase("usuarios", datos)
         }else{
@@ -97,8 +97,12 @@ const Login = () => {
         }
       })
       .then(() => {
+        if(user.rol!=="Pendiente"){
+          history.push('/ventas');  //Redirige a /ventas cuando se inicie sesión
+        }else{
+          history.push('/');  //Redirige a /ventas cuando se inicie sesión
+        }
         
-        history.push('/ventas');  //Redirige a /ventas cuando se inicie sesión
       })
       .catch((err) => {
         console.log(err);
