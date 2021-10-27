@@ -10,6 +10,9 @@ import {
 } from 'config/firebaseCourageous';
 import { Loading } from 'components/Loading'
 
+import PublicLayout from 'layout/PublicLayout';
+
+
 import { getUUID } from '../utils/utils';
 
 export const Venta = () => {
@@ -128,11 +131,13 @@ export const Venta = () => {
   };
 
   return (
-    <div className="container">
+    <div >
       {loading ? (
         <Loading />
       ) : (
         <>
+        <PublicLayout>
+          <div className="container">
           <h1>{id === 'create' ? 'Crear ' : 'Editar '}Venta</h1>
           <hr />
           <div className='mt-3'>
@@ -151,9 +156,9 @@ export const Venta = () => {
                     />
                     {/* {errors.desc && <p>This field is required</p>} */}
                   </div>
-                  
+
                   <div className='mb-3'>
-                  <label className='form-label'>Id Producto</label>
+                    <label className='form-label'>Id Producto</label>
                     <input
                       className='form-control'
                       type='text'
@@ -166,7 +171,7 @@ export const Venta = () => {
                   </div>
 
                   <div className='mb-3'>
-                  <label className='form-label'>Fecha</label>
+                    <label className='form-label'>Fecha</label>
                     <input
                       className='form-control'
                       type='date'
@@ -179,7 +184,7 @@ export const Venta = () => {
                   </div>
 
                   <div className='mb-3'>
-                  <label className='form-label'>Cantidad</label>
+                    <label className='form-label'>Cantidad</label>
                     <input
                       className='form-control'
                       type='number'
@@ -243,21 +248,21 @@ export const Venta = () => {
                           <option value='En progreso'>En progreso</option>
                           <option value='Entregada' selected>Entregada</option>
                           <option value='Cancelada'>Cancelada</option>
-                          
-                          
+
+
                         </>
-                      ): estadoVenta === 'Cancelada' ? (
+                      ) : estadoVenta === 'Cancelada' ? (
                         <>
                           <option diabled value='' /* class='text-muted' */>
                             Seleccione un estado
                           </option>
-                          
+
                           <option value='En progreso'>En progreso</option>
                           <option value='Entregada'>Entregada</option>
                           <option value='Cancelada' selected>Cancelada</option>
-                          
+
                         </>
-                      ):(
+                      ) : (
                         <>
                           <option diabled value='' /* class='text-muted' */>
                             Seleccione un estado
@@ -272,7 +277,7 @@ export const Venta = () => {
                   </div>
 
                   <div className='mb-3'>
-                  <label className='form-label'>Id Cliente</label>
+                    <label className='form-label'>Id Cliente</label>
                     <input
                       className='form-control'
                       type='text'
@@ -285,7 +290,7 @@ export const Venta = () => {
                   </div>
 
                   <div className='mb-3'>
-                  <label className='form-label'>Nombre Cliente</label>
+                    <label className='form-label'>Nombre Cliente</label>
                     <input
                       className='form-control'
                       type='text'
@@ -298,7 +303,7 @@ export const Venta = () => {
                   </div>
 
                   <div className='mb-3'>
-                  <label className='form-label'>Id Vendedor</label>
+                    <label className='form-label'>Id Vendedor</label>
                     <input
                       className='form-control'
                       type='text'
@@ -309,7 +314,7 @@ export const Venta = () => {
                     />
                     {/* {errors.desc && <p>This field is required</p>} */}
                   </div>
-                  
+
                   <input
                     type='submit'
                     className='btn btn-primary'
@@ -334,6 +339,8 @@ export const Venta = () => {
               </div>
             </div>
           </div>
+          </div>
+          </PublicLayout>
         </>
       )}
     </div>

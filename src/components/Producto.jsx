@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {
-  actualizarDocumentoDatabase,
-  consultarDocumentoDatabase,
   buscarDocumentoFiltrado,
   guardarDatabase,
   actualizarDocumentoFiltrado,
 } from 'config/firebaseCourageous';
 import { Loading } from 'components/Loading'
+
+import PublicLayout from 'layout/PublicLayout';
+
 
 import { getUUID } from '../utils/utils';
 
@@ -96,96 +97,98 @@ export const Producto = () => {
   };
 
   return (
-    <div className="container">
+    <div >
       {loading ? (
         <Loading />
       ) : (
         <>
-          <h1>{id === 'create' ? 'Crear ' : 'Editar '}Producto</h1>
-          <hr />
-          <div className='mt-3'>
-            <div className='row'>
-              <div className='offset-md-3 col-md-6'>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className='mb-3'>
-                    <label className='form-label'>Descripción</label>
-                    <input
-                      className='form-control'
-                      type='text'
-                      required
-                      placeholder='Descripción'
-                      value={descripcion}
-                      onChange={(event) => setDescripcion(event.target.value)}
-                    />
-                    {/* {errors.desc && <p>This field is required</p>} */}
-                  </div>
-                  <div className='mb-3'>
-                    <label className='form-label'>Estado</label>
-                    <select
-                      id='inputEstadoProducto'
-                      class='form-select'
-                      required
-                      onChange={(event) => setEstado(event.target.value)}
-                    >
-                      {estado === '' ? (
-                        <>
-                          <option
-                            diabled
-                            value=''
-                            selected
-                            className='text-muted'
-                          >
-                            Seleccione un estado
-                          </option>
-                          <option value='Disponible'>Disponible</option>
-                          <option value=' No disponible'>No disponible</option>
-                        </>
-                      ) : estado === 'Disponible' ? (
-                        <>
-                          <option diabled value='' /* class='text-muted' */>
-                            Seleccione un estado
-                          </option>
-                          <option value='Disponible' selected>
-                            Disponible
-                          </option>
-                          <option value=' No disponible'>No disponible</option>
-                        </>
-                      ) : (
-                        <>
-                          <option diabled value='' /* class='text-muted' */>
-                            Seleccione un estado
-                          </option>
-                          <option value='Disponible'>Disponible</option>
-                          <option value=' No disponible' selected>
-                            No disponible
-                          </option>
-                        </>
-                      )}
-                      ;
-                    </select>
-                  </div>
-                  <div className='mb-3'>
-                    <label className='form-label'>Precio Unitario</label>
-                    <input
-                      className='form-control'
-                      type='number'
-                      min='0'
-                      required
-                      placeholder='Precio Unitario'
-                      value={valor}
-                      onChange={(event) => setValor(event.target.value)}
-                    />
-                  </div>
-                  <input
-                    type='submit'
-                    className='btn btn-primary'
-                    value={
-                      id === 'create'
-                        ? 'Guardar producto'
-                        : 'Actualizar producto'
-                    }
-                  />
-                  {/* <button
+          <PublicLayout>
+            <div className="container">
+              <h1>{id === 'create' ? 'Crear ' : 'Editar '}Producto</h1>
+              <hr />
+              <div className='mt-3'>
+                <div className='row'>
+                  <div className='offset-md-3 col-md-6'>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                      <div className='mb-3'>
+                        <label className='form-label'>Descripción</label>
+                        <input
+                          className='form-control'
+                          type='text'
+                          required
+                          placeholder='Descripción'
+                          value={descripcion}
+                          onChange={(event) => setDescripcion(event.target.value)}
+                        />
+                        {/* {errors.desc && <p>This field is required</p>} */}
+                      </div>
+                      <div className='mb-3'>
+                        <label className='form-label'>Estado</label>
+                        <select
+                          id='inputEstadoProducto'
+                          class='form-select'
+                          required
+                          onChange={(event) => setEstado(event.target.value)}
+                        >
+                          {estado === '' ? (
+                            <>
+                              <option
+                                diabled
+                                value=''
+                                selected
+                                className='text-muted'
+                              >
+                                Seleccione un estado
+                              </option>
+                              <option value='Disponible'>Disponible</option>
+                              <option value=' No disponible'>No disponible</option>
+                            </>
+                          ) : estado === 'Disponible' ? (
+                            <>
+                              <option diabled value='' /* class='text-muted' */>
+                                Seleccione un estado
+                              </option>
+                              <option value='Disponible' selected>
+                                Disponible
+                              </option>
+                              <option value=' No disponible'>No disponible</option>
+                            </>
+                          ) : (
+                            <>
+                              <option diabled value='' /* class='text-muted' */>
+                                Seleccione un estado
+                              </option>
+                              <option value='Disponible'>Disponible</option>
+                              <option value=' No disponible' selected>
+                                No disponible
+                              </option>
+                            </>
+                          )}
+                          ;
+                        </select>
+                      </div>
+                      <div className='mb-3'>
+                        <label className='form-label'>Precio Unitario</label>
+                        <input
+                          className='form-control'
+                          type='number'
+                          min='0'
+                          required
+                          placeholder='Precio Unitario'
+                          value={valor}
+                          onChange={(event) => setValor(event.target.value)}
+                        />
+                      </div>
+                      <input
+                        type='submit'
+                        className='btn btn-primary'
+                        value={
+                          id === 'create'
+                            ? 'Guardar producto'
+                            : 'Actualizar producto'
+                        }
+                      />
+                      {/* <button
                     type="button"
                     className='btn btn-primary'
                     // onClick={
@@ -196,10 +199,12 @@ export const Producto = () => {
                   >
                     {id === 'create' ? 'Guardar' : 'Actualizar'} Producto
                   </button> */}
-                </form>
+                    </form>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </PublicLayout>
         </>
       )}
     </div>
